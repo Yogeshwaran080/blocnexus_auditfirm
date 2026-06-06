@@ -2,26 +2,53 @@ import React from "react";
 import { FaLinkedin, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const FOOTER_LINKS = {
-  Products: [
-    { title: "Smart Contract Audit", desc: "Enterprise-grade security audits", path: "/products/audit" },
-    { title: "API Platform", desc: "Scalable blockchain APIs", path: "/products/api" },
-    { title: "Security Analyzer", desc: "Detect vulnerabilities instantly", path: "/analyser" },
-    { title: "Web3 Marketplace", desc: "Integrate blockchain services", path: "/marketplace" },
+  Solutions: [
+    {
+      title: "Smart Contract Audit",
+      desc: "Comprehensive blockchain security reviews",
+      path: "/solutions/audit",
+    },
+    {
+      title: "Security Consultation",
+      desc: "Expert Web3 security guidance",
+      path: "/solutions/consultation",
+    },
+    {
+      title: "Penetration Testing",
+      desc: "Real-world attack simulations",
+      path: "/solutions/pentest",
+    },
+    {
+      title: "Custom Smart Contract Solutions",
+      desc: "Tailored blockchain development",
+      path: "/solutions/custom",
+    },
   ],
+
   Resources: [
-    { title: "Documentation", desc: "Developer guides & SDKs", path: "/docs" },
-    { title: "Blog", desc: "Security insights & research", path: "/blog" },
-    { title: "Community", desc: "Join builders & auditors", path: "/community" },
-    { title: "Help Center", desc: "Support & troubleshooting", path: "/help" },
+    {
+      title: "Blog",
+      desc: "Research, insights & security updates",
+      path: "/blog",
+    },
+    {
+      title: "Community",
+      desc: "Connect with builders and researchers",
+      path: "/community",
+    },
   ],
+
   Company: [
-    { title: "About BlocNexus", desc: "Next-gen Web3 security platform", path: "/about" },
-    { title: "Careers", desc: "Build the future of blockchain security", path: "/careers" },
-    { title: "Pricing", desc: "Transparent security plans", path: "/pricing" },
-  ],
-  Dashboard: [
-    { title: "User Dashboard", desc: "Manage contracts & scans", path: "/dashboard" },
-    { title: "Analytics", desc: "Real-time protocol insights", path: "/dashboard/analytics" },
+    {
+      title: "About BlocNexus",
+      desc: "Our mission and vision",
+      path: "/about",
+    },
+    {
+      title: "Journey",
+      desc: "The story behind BlocNexus",
+      path: "/journey",
+    },
   ],
 };
 
