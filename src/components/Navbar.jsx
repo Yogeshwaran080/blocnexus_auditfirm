@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "../assets/audit_logos.png";
 import MobileMenu from "./MobileMenu";
+// import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 import {
   Search,
@@ -51,6 +54,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+const isHomePage = location.pathname === "/";
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -62,19 +71,23 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
+
   return (
     <>
       <header
-        className={`
-          fixed top-0 left-0 right-0 z-50
-          transition-all duration-300 ease-in-out
-          ${
-            scrolled
-              ? "bg-black/95 backdrop-blur-xl"
-              : "bg-transparent"
-          }
-        `}
-      >
+  className={`
+    fixed top-0 left-0 right-0 z-50
+    transition-all duration-300 ease-in-out
+    ${
+      isHomePage
+        ? scrolled
+          ? "bg-black/95 backdrop-blur-xl"
+          : "bg-transparent"
+        : "bg-black/95 backdrop-blur-xl"
+    }
+  `}
+>
         <div className="mx-auto flex h-16 max-w-[1440px] items-center px-6 lg:px-8">
 
           {/* LOGO */}
@@ -245,25 +258,23 @@ export default function Navbar() {
 
           {/* DESKTOP CTA */}
 
-          <div className="hidden lg:flex min-w-[220px] justify-end">
-            <a
-              href="#contact"
-              className="
-                rounded-xl
-                bg-blue-600
-                px-6
-                py-2.5
-                text-sm
-                font-semibold
-                text-white
-                transition-colors
-                duration-200
-                hover:bg-blue-700
-              "
-            >
-              Request a Quote
-            </a>
-          </div>
+          <button
+  onClick={() => navigate("/request-a-quote")}
+  className="
+    rounded-xl
+    bg-blue-600
+    px-6
+    py-2.5
+    text-sm
+    font-semibold
+    text-white
+    transition-colors
+    duration-200
+    hover:bg-blue-700
+  "
+>
+  Request a Quote
+</button>
 
           {/* MOBILE MENU BUTTON */}
 
@@ -291,13 +302,15 @@ export default function Navbar() {
       {/* MOBILE MENU */}
 
       <MobileMenu
-        isOpen={mobileOpen}
-        onClose={() =>
-          setMobileOpen(false)
-        }
-        services={servicesDropdown}
-        logo={Logo}
-      />
+  isOpen={mobileOpen}
+  onClose={() => setMobileOpen(false)}
+  services={servicesDropdown}
+  logo={Logo}
+  onRequestQuote={() => {
+    setMobileOpen(false);
+    navigate("/request-a-quote");
+  }}
+/>
     </>
   );
 }
