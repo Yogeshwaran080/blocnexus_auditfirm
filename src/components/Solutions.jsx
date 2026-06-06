@@ -91,38 +91,69 @@ export default function SolutionsSection() {
   ];
 
   return (
-    <section className="w-full bg-white py-14 px-6 md:px-16">
+    <section className="w-full bg-white py-14 md:py-16 px-4 md:px-16">
       {/* TITLE */}
-      <div className="max-w-7xl mx-auto mb-6">
-        <h1 className="text-6xl md:text-7xl font-semibold text-gray-900 leading-tight">
+      <div className="max-w-7xl mx-auto mb-8 md:mb-10">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-gray-900 leading-tight">
           Solutions <span className="text-blue-600">for All</span>
         </h1>
 
-        <p className="mt-3 text-gray-700 text-xl max-w-2xl leading-relaxed">
-          Security, compliance, and risk detection for every stage of your Web3 journey.
+        <p className="mt-3 text-base md:text-xl text-gray-700 max-w-2xl leading-relaxed">
+          Security, compliance, and risk detection for every stage of your Web3
+          journey.
         </p>
       </div>
 
-      {/* GRID (same size preserved) */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 h-[420px]">
-        
+      {/* MAIN GRID */}
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+          gap-4
+          h-auto
+          lg:h-[420px]
+        "
+      >
         {/* LEFT SIDE */}
-        <div className="grid grid-rows-3 gap-2 h-full">
+        <div
+          className="
+            grid
+            gap-3
+            lg:grid-rows-3
+            h-auto
+            lg:h-full
+          "
+        >
           {categories.map((c, i) => (
             <div
               key={i}
               onClick={() => setActive(i)}
-              className={`cursor-pointer rounded-md border transition px-4 py-3 flex flex-col justify-center
-              ${
-                active === i
-                  ? "border-blue-500 bg-gray-50"
-                  : "border-gray-200 hover:border-gray-300"
-              }`}
+              className={`
+                cursor-pointer
+                rounded-xl
+                border
+                transition-all
+                duration-200
+                px-4
+                py-4
+                flex
+                flex-col
+                justify-center
+                ${
+                  active === i
+                    ? "border-blue-500 bg-blue-50"
+                    : "border-gray-200 hover:border-gray-300"
+                }
+              `}
             >
               <h3 className="font-semibold text-gray-900 text-lg leading-snug">
                 {c.title}
               </h3>
-              <p className="text-base text-gray-600 mt-1 leading-relaxed">
+
+              <p className="text-sm md:text-base text-gray-600 mt-1 leading-relaxed">
                 {c.desc}
               </p>
             </div>
@@ -130,13 +161,22 @@ export default function SolutionsSection() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
+        <div
+          className="
+            grid
+            grid-cols-2
+            gap-3
+            h-auto
+            lg:h-full
+          "
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
               className="contents"
             >
               {Array.from({ length: 4 }).map((_, idx) => {
@@ -146,7 +186,7 @@ export default function SolutionsSection() {
                   return (
                     <div
                       key={idx}
-                      className="border border-gray-100 rounded-md"
+                      className="border border-gray-100 rounded-xl"
                     />
                   );
                 }
@@ -156,15 +196,33 @@ export default function SolutionsSection() {
                 return (
                   <div
                     key={idx}
-                    className="border border-gray-200 rounded-md px-3 py-3 flex flex-col justify-center gap-1 hover:border-gray-400 transition"
+                    className="
+                      border
+                      border-gray-200
+                      rounded-xl
+                      p-3
+                      md:p-4
+                      flex
+                      flex-col
+                      justify-center
+                      gap-2
+                      hover:border-gray-400
+                      transition-all
+                      duration-200
+                      min-h-[110px]
+                      md:min-h-[120px]
+                    "
                   >
-                    <Icon className="text-gray-700" size={20} />
+                    <Icon
+                      className="text-gray-700"
+                      size={18}
+                    />
 
-                    <h4 className="font-semibold text-base text-gray-900 leading-snug">
+                    <h4 className="font-semibold text-sm md:text-base text-gray-900 leading-snug">
                       {item.t}
                     </h4>
 
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
                       {item.d}
                     </p>
                   </div>

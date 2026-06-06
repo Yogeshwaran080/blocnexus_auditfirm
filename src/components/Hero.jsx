@@ -10,8 +10,8 @@ export default function Hero() {
     >
       <GridBackground />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-8 pt-24">
-        <div className="max-w-4xl">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 md:px-8 pt-24">
+        <div className="max-w-4xl w-full">
 
           {/* TITLE */}
           <motion.h1
@@ -20,12 +20,23 @@ export default function Hero() {
             transition={{ delay: 0.1 }}
             className="text-white tracking-tight"
           >
-            
-            {/* Line 1 */}
-            <div className="flex flex-wrap items-baseline gap-3 text-5xl md:text-7xl font-semibold leading-[1.05]">
-              <span>Secure</span>
+            {/* MOBILE VIEW */}
+            <div className="block md:hidden text-center">
 
-              <span className="text-blue-500">
+              <div className="text-5xl font-semibold leading-[1.05]">
+                Secure
+              </div>
+
+              <div
+                className="
+                  mt-2
+                  text-5xl
+                  font-semibold
+                  leading-[1.05]
+                  text-blue-500
+                  min-h-[60px]
+                "
+              >
                 <TextType
                   text={[
                     "Smart Contracts",
@@ -40,19 +51,59 @@ export default function Hero() {
                   cursorCharacter="|"
                   cursorBlinkDuration={0.6}
                 />
-              </span>
+              </div>
+
+              <div className="mt-2 text-5xl font-semibold leading-[1.05]">
+                Auditing & Protection.
+              </div>
             </div>
 
-            {/* Line 2 */}
-            <div className="text-5xl md:text-7xl font-semibold leading-[1.1] mt-2">
-              Auditing & Protection.
+            {/* DESKTOP VIEW (UNCHANGED) */}
+            <div className="hidden md:block">
+              <div className="flex flex-wrap items-baseline gap-3 text-5xl md:text-7xl font-semibold leading-[1.05]">
+                <span>Secure</span>
+
+                <span className="text-blue-500">
+                  <TextType
+                    text={[
+                      "Smart Contracts",
+                      "Protocols",
+                      "dApps",
+                      "DeFi Platforms",
+                    ]}
+                    typingSpeed={70}
+                    deletingSpeed={40}
+                    pauseDuration={1200}
+                    showCursor
+                    cursorCharacter="|"
+                    cursorBlinkDuration={0.6}
+                  />
+                </span>
+              </div>
+
+              <div className="text-5xl md:text-7xl font-semibold leading-[1.1] mt-2">
+                Auditing & Protection.
+              </div>
             </div>
 
-            {/* Tagline */}
-            <div className="mt-5 text-slate-400 text-xl md:text-2xl font-medium max-w-2xl leading-relaxed">
+            {/* TAGLINE */}
+            <div
+              className="
+                mt-5
+                text-slate-400
+                text-lg
+                md:text-2xl
+                font-medium
+                max-w-2xl
+                leading-relaxed
+                text-center
+                md:text-left
+                mx-auto
+                md:mx-0
+              "
+            >
               Build secure systems. Launch trusted Web3 protocols with confidence.
             </div>
-
           </motion.h1>
 
           {/* CTA */}
@@ -60,13 +111,46 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="mt-10 flex flex-wrap gap-4"
+            className="
+              mt-10
+              flex
+              flex-col
+              sm:flex-row
+              gap-4
+              justify-center
+              md:justify-start
+            "
           >
-            <button className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700">
+            <button
+              className="
+                rounded-xl
+                bg-blue-600
+                px-6
+                py-3
+                text-sm
+                font-semibold
+                text-white
+                transition
+                hover:bg-blue-700
+              "
+            >
               Get an Audit
             </button>
 
-            <button className="rounded-xl border border-slate-800 px-6 py-3 text-sm font-semibold text-slate-300 transition hover:border-slate-600">
+            <button
+              className="
+                rounded-xl
+                border
+                border-slate-800
+                px-6
+                py-3
+                text-sm
+                font-semibold
+                text-slate-300
+                transition
+                hover:border-slate-600
+              "
+            >
               View Services
             </button>
           </motion.div>
