@@ -40,23 +40,23 @@ export default function Hero() {
             {/* MOBILE VIEW */}
             <div className="block md:hidden text-center">
 
-              <div className="text-[38px] font-semibold leading-[1.05]">
-                Secure
-              </div>
+              <div className="text-[38px] font-semibold leading-[0.98]">
+  Secure
+</div>
 
-              <div
-                className="
-                  mt-2
-                  text-[38px]
-                  font-semibold
-                  leading-[1.05]
-                  text-blue-500
-                  min-h-[90px]
-                  flex
-                  items-center
-                  justify-center
-                "
-              >
+<div
+  className="
+    mt-1
+    text-[38px]
+    font-semibold
+    leading-[0.98]
+    text-blue-500
+    min-h-[60px]
+    flex
+    items-center
+    justify-center
+  "
+>
                 <TextType
                   text={[
                     "Smart Contracts",
@@ -73,9 +73,9 @@ export default function Hero() {
                 />
               </div>
 
-              <div className="text-[38px] font-semibold leading-[1.05]">
-                Auditing & Protection.
-              </div>
+              <div className="mt-1 text-[38px] font-semibold leading-[0.98]">
+  Auditing & Protection.
+</div>
             </div>
 
             {/* DESKTOP VIEW */}
