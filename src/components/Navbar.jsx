@@ -261,6 +261,7 @@ const isHomePage = location.pathname === "/";
           <button
   onClick={() => navigate("/request-a-quote")}
   className="
+    hidden lg:flex
     rounded-xl
     bg-blue-600
     px-6

@@ -13,6 +13,7 @@ export default function MobileMenu({
   onClose,
   services,
   logo,
+  onRequestQuote,
 }) {
   const [servicesOpen, setServicesOpen] =
     useState(false);
@@ -314,25 +315,25 @@ export default function MobileMenu({
 
               {/* CTA */}
 
-              <a
-                href="#contact"
-                onClick={onClose}
-                className="
-                  mt-8
-                  flex
-                  items-center
-                  justify-center
-                  rounded-xl
-                  bg-blue-600
-                  py-4
-                  text-white
-                  font-semibold
-                  hover:bg-blue-700
-                  transition
-                "
-              >
-                Request a Quote
-              </a>
+              <button
+  onClick={onRequestQuote}
+  className="
+    mt-8
+    flex
+    items-center
+    justify-center
+    rounded-xl
+    bg-blue-600
+    py-4
+    text-white
+    font-semibold
+    hover:bg-blue-700
+    transition
+    w-full
+  "
+>
+  Request a Quote
+</button>
             </div>
           </motion.div>
         </>
