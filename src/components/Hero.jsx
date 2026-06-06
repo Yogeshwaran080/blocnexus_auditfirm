@@ -5,12 +5,29 @@ import TextType from "../utility/TextType";
 export default function Hero() {
   return (
     <section
-      id="home"
-      className="relative min-h-screen overflow-hidden bg-black font-manrope"
-    >
+  id="home"
+  className="relative min-h-[85vh] md:min-h-screen overflow-hidden bg-black font-manrope"
+>
       <GridBackground />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 md:px-8 pt-24">
+      <div
+  className="
+    relative
+    z-10
+    mx-auto
+    flex
+    min-h-[85vh]
+    md:min-h-screen
+    items-center
+    max-w-7xl
+    px-6
+    md:px-8
+    pt-14
+    md:pt-24
+    pb-10
+    md:pb-0
+  "
+>
         <div className="max-w-4xl w-full">
 
           {/* TITLE */}
@@ -23,7 +40,7 @@ export default function Hero() {
             {/* MOBILE VIEW */}
             <div className="block md:hidden text-center">
 
-              <div className="text-5xl font-semibold leading-[1.05]">
+             <div className="text-[38px] font-semibold leading-[1.05]">
                 Secure
               </div>
 
@@ -53,7 +70,7 @@ export default function Hero() {
                 />
               </div>
 
-              <div className="mt-2 text-5xl font-semibold leading-[1.05]">
+              <div className="mt-2 text-[38px] font-semibold leading-[1.05]">
                 Auditing & Protection.
               </div>
             </div>
