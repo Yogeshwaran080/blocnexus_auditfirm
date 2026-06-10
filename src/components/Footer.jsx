@@ -7,22 +7,22 @@ const FOOTER_LINKS = {
     {
       title: "Smart Contract Audit",
       desc: "Comprehensive blockchain security reviews",
-      path: "/solutions/audit",
+      path: "/",
     },
     {
       title: "Security Consultation",
       desc: "Expert Web3 security guidance",
-      path: "/solutions/consultation",
+      path: "/",
     },
     {
       title: "Penetration Testing",
       desc: "Real-world attack simulations",
-      path: "/solutions/pentest",
+      path: "/",
     },
     {
       title: "Custom Smart Contract Solutions",
       desc: "Tailored blockchain development",
-      path: "/solutions/custom",
+      path: "/",
     },
   ],
 
@@ -30,12 +30,12 @@ const FOOTER_LINKS = {
     {
       title: "Blog",
       desc: "Research, insights & security updates",
-      path: "/blog",
+      path: "/blogs",
     },
     {
       title: "Community",
       desc: "Connect with builders and researchers",
-      path: "/community",
+      path: "/",
     },
   ],
 
@@ -43,12 +43,12 @@ const FOOTER_LINKS = {
     {
       title: "About BlocNexus",
       desc: "Our mission and vision",
-      path: "/about",
+      path: "/about-us",
     },
     {
       title: "Journey",
       desc: "The story behind BlocNexus",
-      path: "/journey",
+      path: "/",
     },
   ],
 };
