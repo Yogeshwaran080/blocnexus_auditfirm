@@ -1,5 +1,6 @@
 import React from "react";
-import { FaLinkedin, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import Logo from "../../src/assets/dotted_shield_no_bg.svg";
 
 const FOOTER_LINKS = {
   Solutions: [
@@ -53,19 +54,18 @@ const FOOTER_LINKS = {
 };
 
 export default function Footer() {
-  const handleNavigation = (path) => {
-    if (path) window.location.href = path;
-  };
+  const navigate = useNavigate();
 
   return (
-    <footer className="bg-white text-gray-900 border-t border-gray-200">
+    <footer className="bg-white border-t border-gray-200 overflow-hidden">
 
-      {/* TOP GRID */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      {/* TOP SECTION */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_420px] gap-8 items-start">
 
+        {/* LINKS */}
         {Object.entries(FOOTER_LINKS).map(([section, links]) => (
           <div key={section}>
-            <h3 className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-4">
               {section}
             </h3>
 
@@ -73,13 +73,13 @@ export default function Footer() {
               {links.map((link, i) => (
                 <li key={i}>
                   <button
-                    onClick={() => handleNavigation(link.path)}
+                    onClick={() => navigate(link.path)}
                     className="text-left group w-full"
                   >
-                    <h4 className="text-sm font-medium text-gray-800 group-hover:text-blue-600 transition">
+                    <h4 className="text-sm font-semibold text-black group-hover:text-blue-600 transition">
                       {link.title}
                     </h4>
-                    <p className="text-xs text-gray-500 group-hover:text-gray-700 transition">
+                    <p className="text-xs text-gray-600 mt-0.5 leading-snug">
                       {link.desc}
                     </p>
                   </button>
@@ -89,34 +89,43 @@ export default function Footer() {
           </div>
         ))}
 
+        {/* SHIELD LOGO */}
+        <div className="hidden lg:flex justify-end items-start h-full">
+          <div className="relative -top-6">
+            <img
+              src={Logo}
+              alt="BlocNexus Shield"
+              className="w-[380px] h-[380px] object-contain opacity-90 select-none pointer-events-none"
+            />
+          </div>
+        </div>
+
       </div>
 
       {/* DIVIDER */}
       <div className="border-t border-gray-200" />
 
       {/* BOTTOM BAR */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
 
-        <span>
-          © {new Date().getFullYear()} BlocNexus. Built for Web3 security.
-        </span>
+        <p className="text-xs text-gray-600">
+          © {new Date().getFullYear()} BlocNexus. All rights reserved.
+        </p>
 
-        <div className="flex gap-6">
-          {["Security", "Privacy Policy", "Terms"].map((txt, i) => (
-            <button key={i} className="hover:text-blue-600 transition">
-              {txt}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex gap-4 items-center">
-          <FaTwitter className="hover:text-blue-600 cursor-pointer transition" />
-          <FaLinkedin className="hover:text-blue-600 cursor-pointer transition" />
-          <FaGithub className="hover:text-blue-600 cursor-pointer transition" />
-          <FaInstagram className="hover:text-blue-600 cursor-pointer transition" />
+        <div className="flex items-center gap-5 text-xs">
+          <button className="text-gray-600 hover:text-blue-600 transition">
+            Security
+          </button>
+          <button className="text-gray-600 hover:text-blue-600 transition">
+            Privacy Policy
+          </button>
+          <button className="text-gray-600 hover:text-blue-600 transition">
+            Terms
+          </button>
         </div>
 
       </div>
+
     </footer>
   );
 }
