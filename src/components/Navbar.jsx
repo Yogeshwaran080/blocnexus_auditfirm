@@ -126,131 +126,139 @@ const isHomePage = location.pathname === "/";
 
                 return (
                   <li
-                    key={item.name}
-                    className="relative"
-                    onMouseEnter={() =>
-                      isServices && setOpen(true)
-                    }
-                    onMouseLeave={() =>
-                      isServices && setOpen(false)
-                    }
+  key={item.name}
+  className="relative"
+  onMouseEnter={() => isServices && setOpen(true)}
+  onMouseLeave={() => isServices && setOpen(false)}
+>
+  <button
+    onClick={() => {
+      switch (item.name) {
+        case "Services":
+          if (location.pathname !== "/") {
+            navigate("/");
+            setTimeout(() => {
+              document
+                .getElementById("services")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          } else {
+            document
+              .getElementById("services")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }
+          break;
+
+        case "About":
+          navigate("/about-us");
+          break;
+
+        case "Blogs":
+          navigate("/blogs");
+          break;
+
+        default:
+          navigate("/");
+      }
+    }}
+    className="
+      text-[15px]
+      font-medium
+      text-[#8B95A7]
+      transition-colors
+      duration-200
+      hover:text-white
+      flex
+      items-center
+      gap-1
+    "
+  >
+    {item.name}
+  </button>
+
+  {isServices && (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
+          className="
+            absolute
+            top-10
+            left-1/2
+            -translate-x-1/2
+            w-[340px]
+            rounded-xl
+            bg-black/95
+            border
+            border-white/10
+            shadow-xl
+            p-4
+          "
+        >
+          {servicesDropdown.map((item, i) => {
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={i}
+                className="
+                  flex
+                  items-start
+                  gap-3
+                  p-3
+                  rounded-lg
+                  hover:bg-white/10
+                  transition
+                  cursor-pointer
+                "
+              >
+                <div
+                  className="
+                    p-2
+                    rounded-lg
+                    bg-blue-500/10
+                    border
+                    border-blue-400/20
+                    shadow-inner
+                  "
+                >
+                  <Icon
+                    className="text-blue-400"
+                    size={18}
+                  />
+                </div>
+
+                <div>
+                  <h3
+                    className="
+                      text-white
+                      text-sm
+                      font-semibold
+                    "
                   >
-                    <a
-                      href={item.href}
-                      className="
-                        text-[15px]
-                        font-medium
-                        text-[#8B95A7]
-                        transition-colors
-                        duration-200
-                        hover:text-white
-                        flex
-                        items-center
-                        gap-1
-                      "
-                    >
-                      {item.name}
-                    </a>
+                    {item.title}
+                  </h3>
 
-                    {/* SERVICES DROPDOWN */}
-
-                    {isServices && (
-                      <AnimatePresence>
-                        {open && (
-                          <motion.div
-                            initial={{
-                              opacity: 0,
-                              y: 10,
-                            }}
-                            animate={{
-                              opacity: 1,
-                              y: 0,
-                            }}
-                            exit={{
-                              opacity: 0,
-                              y: 10,
-                            }}
-                            transition={{
-                              duration: 0.2,
-                            }}
-                            className="
-                              absolute
-                              top-10
-                              left-1/2
-                              -translate-x-1/2
-                              w-[340px]
-                              rounded-xl
-                              bg-black/95
-                              border
-                              border-white/10
-                              shadow-xl
-                              p-4
-                            "
-                          >
-                            {servicesDropdown.map(
-                              (item, i) => {
-                                const Icon =
-                                  item.icon;
-
-                                return (
-                                  <a
-                                    key={i}
-                                    href={item.href}
-                                    className="
-                                      flex
-                                      items-start
-                                      gap-3
-                                      p-3
-                                      rounded-lg
-                                      hover:bg-white/10
-                                      transition
-                                    "
-                                  >
-                                    <div
-                                      className="
-                                        p-2
-                                        rounded-lg
-                                        bg-blue-500/10
-                                        border
-                                        border-blue-400/20
-                                        shadow-inner
-                                      "
-                                    >
-                                      <Icon
-                                        className="text-blue-400"
-                                        size={18}
-                                      />
-                                    </div>
-
-                                    <div>
-                                      <h3
-                                        className="
-                                          text-white
-                                          text-sm
-                                          font-semibold
-                                        "
-                                      >
-                                        {item.title}
-                                      </h3>
-
-                                      <p
-                                        className="
-                                          text-xs
-                                          text-[#8B95A7]
-                                        "
-                                      >
-                                        {item.desc}
-                                      </p>
-                                    </div>
-                                  </a>
-                                );
-                              }
-                            )}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    )}
-                  </li>
+                  <p
+                    className="
+                      text-xs
+                      text-[#8B95A7]
+                    "
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )}
+</li>
                 );
               })}
             </ul>
@@ -311,7 +319,7 @@ const isHomePage = location.pathname === "/";
     setMobileOpen(false);
     navigate("/request-a-quote");
   }}
-/>
+/>   
     </>
   );
 }

@@ -75,7 +75,7 @@ export default function SolutionsSection() {
   const activeService = services[active];
 
   return (
-    <section className="w-full bg-white pt-0 pb-12 md:py-16 px-4 md:px-16 overflow-hidden">
+    <section id="services" className="w-full bg-white pt-0 pb-12 md:py-16 px-4 md:px-16 overflow-hidden">
 
       {/* SERVICE BUTTONS */}
 

@@ -91,7 +91,7 @@ export default function SolutionsSection() {
   ];
 
   return (
-<section className="w-full bg-white pt-5 pb-12 md:pt-8 md:pb-8 px-4 md:px-16">
+<section  className="w-full bg-white pt-5 pb-12 md:pt-8 md:pb-8 px-4 md:px-16">
       {/* TITLE */}
       <div className="max-w-7xl mx-auto mb-6 md:mb-10">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-gray-900 leading-tight">

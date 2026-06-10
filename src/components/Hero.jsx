@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import GridBackground from "../utility/GridBackground";
 import TextType from "../utility/TextType";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+   const navigate = useNavigate();
   return (
     <section
       id="home"
@@ -144,7 +146,7 @@ export default function Hero() {
               md:justify-start
             "
           >
-            <button
+            <button onClick={() => navigate("/request-a-quote")}
               className="
                 w-full
                 sm:w-auto
@@ -166,6 +168,11 @@ export default function Hero() {
             </button>
 
             <button
+              onClick={() => {
+    document
+      .getElementById("services")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }}
               className="
                 w-full
                 sm:w-auto
