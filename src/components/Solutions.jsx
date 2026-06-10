@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import {
   Target,
   FileSearch,
@@ -9,58 +8,64 @@ import {
   Bug,
   Lock,
   Shield,
+  ArrowUpRight,
 } from "lucide-react";
 
 export default function SolutionsSection() {
   const [active, setActive] = useState(0);
 
+  const rightScrollContainerRef = useRef(null);
+  const categoryElementsRef = useRef([]);
+  const isClickScrolling = useRef(false);
+  const clickTimeoutRef = useRef(null);
+
   const services = {
     audit: {
       icon: FileSearch,
       t: "Smart Contract Audit",
-      d: "Deep vulnerability analysis",
+      d: "Comprehensive manual and automated vulnerability analysis.",
     },
     pentest: {
       icon: Target,
       t: "Penetration Testing",
-      d: "Real-world attack simulation",
+      d: "Simulated real-world adversarial attacks.",
     },
     code: {
       icon: Code2,
       t: "Code Review",
-      d: "Manual + automated inspection",
+      d: "Expert-led architecture and logic review.",
     },
     static: {
       icon: ScanLine,
       t: "Static Analysis",
-      d: "Detect unsafe patterns in code",
+      d: "Automated vulnerability detection.",
     },
     threat: {
       icon: Radar,
       t: "Threat Modeling",
-      d: "Pre-deployment attack mapping",
+      d: "Pre-deployment risk identification.",
     },
     bugbounty: {
       icon: Bug,
-      t: "Bug Bounty Simulation",
-      d: "Crowdsourced attack testing",
+      t: "Bug Bounty Setup",
+      d: "Crowdsourced security testing.",
     },
     exploit: {
       icon: Lock,
       t: "Exploit Detection",
-      d: "Detect vulnerabilities early",
+      d: "Real-time exploit monitoring.",
     },
     hardening: {
       icon: Shield,
       t: "Protocol Hardening",
-      d: "Enterprise-grade security strengthening",
+      d: "Infrastructure security strengthening.",
     },
   };
 
   const categories = [
     {
-      title: "For Enterprises",
-      desc: "Institutional-grade security and risk management.",
+      title: "Enterprises",
+      desc: "Institutional security management",
       items: [
         services.audit,
         services.pentest,
@@ -69,8 +74,8 @@ export default function SolutionsSection() {
       ],
     },
     {
-      title: "For Web3 Projects",
-      desc: "Secure deployment from launch to scale.",
+      title: "Web3 Projects",
+      desc: "Secure launch strategies",
       items: [
         services.audit,
         services.code,
@@ -79,8 +84,8 @@ export default function SolutionsSection() {
       ],
     },
     {
-      title: "For Exchanges & Protocols",
-      desc: "Continuous monitoring and threat protection.",
+      title: "Exchanges & DeFi",
+      desc: "Continuous protection systems",
       items: [
         services.pentest,
         services.bugbounty,
@@ -90,146 +95,202 @@ export default function SolutionsSection() {
     },
   ];
 
+  const handleCategoryClick = (index) => {
+    isClickScrolling.current = true;
+    setActive(index);
+
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+
+    const target = categoryElementsRef.current[index];
+    const container = rightScrollContainerRef.current;
+
+    if (target && container) {
+      container.scrollTo({
+        top: target.offsetTop - container.offsetTop,
+        behavior: "smooth",
+      });
+    }
+
+    clickTimeoutRef.current = setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 700);
+  };
+
+  useEffect(() => {
+    const container = rightScrollContainerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isClickScrolling.current) return;
+
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(Number(entry.target.dataset.index));
+          }
+        });
+      },
+      {
+        root: container,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0,
+      }
+    );
+
+    categoryElementsRef.current.forEach(
+      (el) => el && observer.observe(el)
+    );
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-<section  className="w-full bg-white pt-5 pb-12 md:pt-8 md:pb-8 px-4 md:px-16">
-      {/* TITLE */}
-      <div className="max-w-7xl mx-auto mb-6 md:mb-10">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-gray-900 leading-tight">
-          Solutions <span className="text-blue-600">for All</span>
-        </h1>
+    <section className="w-full bg-[#FAFAFA] py-14 px-5 md:px-16">
+      <div className="max-w-7xl mx-auto">
 
-        <p className="mt-3 text-base md:text-xl text-gray-700 max-w-2xl leading-relaxed">
-          Security, compliance, and risk detection for every stage of your Web3
-          journey.
-        </p>
-      </div>
-
-      {/* MAIN GRID */}
-      <div
-        className="
-          max-w-7xl
-          mx-auto
-          grid
-          grid-cols-1
-          lg:grid-cols-2
-          gap-4
-          h-auto
-          lg:h-[420px]
-        "
-      >
-        {/* LEFT SIDE */}
-        <div
-          className="
-            grid
-            gap-3
-            lg:grid-rows-3
-            h-auto
-            lg:h-full
-          "
-        >
-          {categories.map((c, i) => (
-            <div
-              key={i}
-              onClick={() => setActive(i)}
-              className={`
-                cursor-pointer
-                rounded-xl
-                border
-                transition-all
-                duration-200
-                px-4
-                py-4
-                flex
-                flex-col
-                justify-center
-                ${
-                  active === i
-                    ? "border-blue-500 bg-blue-50"
-                    : "border-gray-200 hover:border-gray-300"
-                }
-              `}
-            >
-              <h3 className="font-semibold text-gray-900 text-lg leading-snug">
-                {c.title}
-              </h3>
-
-              <p className="text-sm md:text-base text-gray-600 mt-1 leading-relaxed">
-                {c.desc}
-              </p>
-            </div>
-          ))}
+        {/* HEADER */}
+        <div className="mb-10 md:mb-12">
+          <p className="text-xs font-bold text-blue-600 uppercase tracking-[0.25em]">
+            Solutions Map
+          </p>
+          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mt-2">
+            Security for the Ecosystem
+          </h1>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div
-          className="
-            grid
-            grid-cols-2
-            gap-3
-            h-auto
-            lg:h-full
-          "
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="contents"
-            >
-              {Array.from({ length: 4 }).map((_, idx) => {
-                const item = categories[active].items[idx];
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-                if (!item) {
-                  return (
-                    <div
-                      key={idx}
-                      className="border border-gray-100 rounded-xl"
-                    />
-                  );
-                }
+          {/* LEFT SIDEBAR (DESKTOP) + TOP SCROLL (MOBILE) */}
+          <div className="lg:col-span-5">
 
-                const Icon = item.icon;
+            {/* MOBILE CATEGORY BAR */}
+            <div className="flex lg:hidden gap-3 overflow-x-auto pb-3 mb-5 scrollbar-hide">
+              {categories.map((c, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleCategoryClick(i)}
+                  className={`whitespace-nowrap px-4 py-2 rounded-full border text-sm transition ${
+                    active === i
+                      ? "bg-blue-600 text-white border-blue-600"
+                      : "bg-white text-gray-700 border-gray-200"
+                  }`}
+                >
+                  {c.title}
+                </button>
+              ))}
+            </div>
 
-                return (
-                  <div
-                    key={idx}
-                    className="
-                      border
-                      border-gray-200
-                      rounded-xl
-                      p-3
-                      md:p-4
-                      flex
-                      flex-col
-                      justify-center
-                      gap-2
-                      hover:border-gray-400
-                      transition-all
-                      duration-200
-                      min-h-[110px]
-                      md:min-h-[120px]
-                    "
+            {/* DESKTOP SIDEBAR */}
+            <div className="hidden lg:flex lg:flex-col gap-4 lg:sticky lg:top-10 h-fit">
+              {categories.map((c, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleCategoryClick(i)}
+                  className={`w-full text-left p-6 rounded-2xl border transition ${
+                    active === i
+                      ? "bg-white border-blue-600 shadow-sm"
+                      : "bg-transparent border-gray-200 hover:bg-gray-100"
+                  }`}
+                >
+                  <h3
+                    className={`text-lg font-bold ${
+                      active === i
+                        ? "text-blue-600"
+                        : "text-gray-900"
+                    }`}
                   >
-                    <Icon
-                      className="text-gray-700"
-                      size={18}
-                    />
+                    {c.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-2">
+                    {c.desc}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </div>
 
-                    <h4 className="font-semibold text-sm md:text-base text-gray-900 leading-snug">
-                      {item.t}
-                    </h4>
+          {/* RIGHT SIDE */}
+          <div className="lg:col-span-7 relative">
 
-                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                      {item.d}
-                    </p>
+            <div
+              ref={rightScrollContainerRef}
+              className="
+                h-[520px]
+                md:h-[520px]
+                lg:h-[520px]
+                overflow-y-auto
+                pr-2
+                space-y-5
+                scroll-smooth
+                relative
+              "
+            >
+              {categories.map((cat, catIdx) => (
+                <div
+                  key={catIdx}
+                  data-index={catIdx}
+                  ref={(el) =>
+                    (categoryElementsRef.current[catIdx] = el)
+                  }
+                >
+                  <div className="space-y-3">
+                    {cat.items.map((item, idx) => {
+                      const Icon = item.icon;
+
+                      return (
+                        <div
+                          key={`${catIdx}-${idx}`}
+                          className="
+                            flex
+                            items-start
+                            justify-between
+                            bg-white
+                            border
+                            border-gray-200
+                            rounded-xl
+                            p-4
+                            hover:border-gray-400
+                            transition
+                            min-h-[100px]
+                            md:min-h-[110px]
+                          "
+                        >
+                          <div className="flex gap-3 max-w-[75%]">
+                            <Icon
+                              className="text-gray-400 mt-1"
+                              size={18}
+                            />
+                            <div>
+                              <h4 className="font-semibold text-gray-900">
+                                {item.t}
+                              </h4>
+                              <p className="text-sm text-gray-500">
+                                {item.d}
+                              </p>
+                            </div>
+                          </div>
+
+                          <button className="flex items-center gap-1 text-xs font-semibold text-gray-700">
+                            Action
+                            <ArrowUpRight size={14} />
+                          </button>
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+                </div>
+              ))}
+            </div>
+
+            {/* 🔥 RESPONSIVE SMOKE FADE */}
+            <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 md:h-32">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-[#FAFAFA]/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA]/80 via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_bottom,black,transparent_75%)] bg-[#FAFAFA]/60" />
+            </div>
+
+          </div>
+
         </div>
       </div>
     </section>
