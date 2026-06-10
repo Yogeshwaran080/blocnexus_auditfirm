@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -65,6 +66,10 @@ export default function Contact() {
     });
   };
 
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
   const toggleService = (service) => {
     if (form.services.includes(service)) {
       setForm({
@@ -88,7 +93,7 @@ export default function Contact() {
   };
 
   return (
-  <section className="bg-white min-h-screen py-20 px-4 md:px-10">
+  <section id="quote" className="bg-white min-h-screen py-20 px-4 md:px-10">
     <div className="max-w-5xl mx-auto">
 
       {/* HERO */}

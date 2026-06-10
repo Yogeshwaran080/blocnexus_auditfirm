@@ -73,7 +73,12 @@ export default function Footer() {
               {links.map((link, i) => (
                 <li key={i}>
                   <button
-                    onClick={() => navigate(link.path)}
+                   onClick={() => {
+  navigate(link.path);
+
+  // force scroll to top on navigation
+  window.scrollTo(0, 0);
+}}
                     className="text-left group w-full"
                   >
                     <h4 className="text-sm font-semibold text-black group-hover:text-blue-600 transition">
