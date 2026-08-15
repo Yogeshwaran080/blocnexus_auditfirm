@@ -117,7 +117,7 @@ export default function Hero() {
               </div>
 
               <div className="text-5xl md:text-7xl font-semibold leading-[1.1] mt-2">
-                Auditing & Protection.
+                Auditing & Consultation.
               </div>
             </div>
 
