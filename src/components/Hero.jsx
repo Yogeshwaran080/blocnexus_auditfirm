@@ -89,7 +89,7 @@ export default function Hero() {
               </div>
 
               <div className="mt-1 text-[38px] font-semibold leading-[0.98]">
-                Auditing & Protection.
+                Auditing & Consultation.
               </div>
             </div>
 
