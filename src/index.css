@@ -1,0 +1,19 @@
+@import "tailwindcss";
+/* 1. Import native Lenis structure to cleanly stabilize fast acceleration frames */
+@import "lenis/dist/lenis.css";
+
+html {
+  /* 2. CRITICAL: Change to auto so CSS doesn't fight Lenis's calculations */
+  scroll-behavior: auto !important; 
+  
+  /* 3. Keep this! It ensures your sections align perfectly under the sticky navbar */
+  scroll-padding-top: 5rem; 
+}
+
+body {
+  margin: 0;
+  background: #000000;
+  color: white;
+  font-family: "Manrope", sans-serif;
+  overflow-x: hidden; 
+}
