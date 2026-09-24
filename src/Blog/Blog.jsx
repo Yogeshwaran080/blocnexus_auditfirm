@@ -83,43 +83,35 @@ export default function Blog() {
       .sort((a, b) => new Date(b.date) - new Date(a.date));
   }, [posts, search, activeCategory]);
 
+  if (loading) {
+    return <PageLoader />;
+  }
+
+  if (error) {
+    return <Lottie404 onRetry={fetchPosts} />;
+  }
+
   return (
     <main className="bg-white min-h-screen">
       <BlogHero search={search} setSearch={setSearch} posts={posts} />
 
-      {loading && (
-        <PageLoader fullScreen={false} />
-      )}
+      {featuredBlog && <FeaturedBlog blog={featuredBlog} />}
 
-      {!loading && error && (
-        <Lottie404
-          title="Server Unreachable"
-          message="Unable to connect to the blog server. Please check your network or try again later."
-          onRetry={fetchPosts}
-        />
-      )}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <CategoryFilter active={activeCategory} setActive={setActiveCategory} />
+          </div>
 
-      {!loading && !error && (
-        <>
-          {featuredBlog && <FeaturedBlog blog={featuredBlog} />}
-
-          <section className="py-16 px-6">
-            <div className="max-w-7xl mx-auto">
-              <div className="mb-10">
-                <CategoryFilter active={activeCategory} setActive={setActiveCategory} />
-              </div>
-
-              {filteredBlogs.length === 0 ? (
-                <p className="text-center text-gray-500 py-16">
-                  No articles found.
-                </p>
-              ) : (
-                <BlogGrid blogs={filteredBlogs} />
-              )}
-            </div>
-          </section>
-        </>
-      )}
+          {filteredBlogs.length === 0 ? (
+            <p className="text-center text-gray-500 py-16 font-light">
+              No articles found.
+            </p>
+          ) : (
+            <BlogGrid blogs={filteredBlogs} />
+          )}
+        </div>
+      </section>
 
       <Newsletter />
     </main>

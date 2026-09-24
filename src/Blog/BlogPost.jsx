@@ -66,12 +66,7 @@ export default function BlogPost() {
   }
 
   if (notFound || !post) {
-    return (
-      <Lottie404
-        title="Article Not Found"
-        message="The blog article you are looking for does not exist or the server could not be reached."
-      />
-    );
+    return <Lottie404 />;
   }
 
   return (
