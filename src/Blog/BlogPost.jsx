@@ -6,6 +6,7 @@ import { getPostBySlug, likePost } from "./api/blogApi";
 import { deriveImage, formatDate, formatReadTime } from "./utils/postAdapters";
 import "./blogArticle.css";
 import PageLoader from "../components/PageLoader";
+import Lottie404 from "../components/Lottie404";
 
 export default function BlogPost() {
   // Route param is named ":id" but the backend looks posts up by slug.
@@ -26,16 +27,12 @@ export default function BlogPost() {
       setNotFound(false);
 
       try {
-        // Every successful call here increments the backend's view
-        // counter for this post (server-side, in PostService.getPostBySlug).
         const data = await getPostBySlug(slug);
         if (cancelled) return;
 
         setPost(data);
         setLiked(localStorage.getItem(`liked_post_${data.id}`) === "true");
       } catch {
-        // Any failure (404 not found, network error, etc.) renders the
-        // same "Blog Not Found" state, matching the original design.
         if (cancelled) return;
         setNotFound(true);
       } finally {
@@ -58,7 +55,7 @@ export default function BlogPost() {
       setLiked(true);
       localStorage.setItem(`liked_post_${post.id}`, "true");
     } catch {
-      // Silently ignore — like is a non-critical enhancement.
+      // Silently ignore
     } finally {
       setLikeBusy(false);
     }
@@ -70,9 +67,10 @@ export default function BlogPost() {
 
   if (notFound || !post) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-3xl font-bold text-black">Blog Not Found</h1>
-      </div>
+      <Lottie404
+        title="Article Not Found"
+        message="The blog article you are looking for does not exist or the server could not be reached."
+      />
     );
   }
 

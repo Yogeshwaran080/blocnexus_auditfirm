@@ -10,6 +10,7 @@ import { getPublishedPosts } from "./api/blogApi";
 import { adaptPost } from "./utils/postAdapters";
 
 import PageLoader from "../components/PageLoader";
+import Lottie404 from "../components/Lottie404";
 
 export default function Blog() {
   const [search, setSearch] = useState("");
@@ -18,6 +19,20 @@ export default function Blog() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const fetchPosts = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const page = await getPublishedPosts(0, 40);
+      const items = page?.content ?? [];
+      setPosts(items.map((post, index) => adaptPost(post, { featured: index === 0 })));
+    } catch (err) {
+      setError(err?.message || "Server unreachable. Unable to load blog posts.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -35,7 +50,7 @@ export default function Blog() {
           );
         }
       } catch (err) {
-        if (!cancelled) setError(err.message || "Failed to load blog posts.");
+        if (!cancelled) setError(err.message || "Server unreachable.");
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -77,12 +92,11 @@ export default function Blog() {
       )}
 
       {!loading && error && (
-        <section className="py-24 px-6 text-center">
-          <p className="text-red-600 font-medium">{error}</p>
-          <p className="mt-2 text-gray-500 text-sm">
-            Make sure the backend API is running and reachable.
-          </p>
-        </section>
+        <Lottie404
+          title="Server Unreachable"
+          message="Unable to connect to the blog server. Please check your network or try again later."
+          onRetry={fetchPosts}
+        />
       )}
 
       {!loading && !error && (

@@ -12,6 +12,7 @@ const Contact = lazy(() => import("./contact_components/Contact"));
 const About = lazy(() => import("./About_Us/About"));
 const Blog = lazy(() => import("./Blog/Blog"));
 const BlogPost = lazy(() => import("./Blog/BlogPost"));
+const Lottie404 = lazy(() => import("./components/Lottie404"));
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/about-us" element={<About />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="*" element={<Lottie404 />} />
         </Routes>
       </Suspense>
 
