@@ -92,16 +92,15 @@ export default function Footer() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="relative bg-white border-t border-zinc-200 overflow-hidden select-none"
     >
-      {/* ── SUBTLE GLOBAL GRID & GLOBE BACKGROUND OVERLAY ── */}
+      {/* ── CLEAN NEUTRAL GRID OVERLAY (NO BLUE GLOW) ── */}
       <div
-        className="absolute inset-0 pointer-events-none z-0 opacity-40"
+        className="absolute inset-0 pointer-events-none z-0 opacity-30"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 85% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 60%),
-            linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
+            linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px)
           `,
-          backgroundSize: "100% 100%, 32px 32px, 32px 32px",
+          backgroundSize: "32px 32px",
         }}
       />
 
@@ -135,17 +134,13 @@ export default function Footer() {
           </div>
         ))}
 
-        {/* PROFESSIONAL SHIELD LOGO GRAPHIC WITH GLOBE ILLUMINATION */}
+        {/* ORIGINAL SHIELD LOGO GRAPHIC WITH SUBTLE DARK FINISH (NO GLOW) */}
         <div className="hidden lg:flex flex-col justify-between items-end h-full pt-2 pr-2 relative">
-          <div className="relative">
-            {/* Subtle Globe Glow behind Shield */}
-            <div className="absolute -inset-4 rounded-full bg-blue-500/10 blur-2xl pointer-events-none" />
-            <img
-              src={Logo}
-              alt="BlocNexus Security Shield"
-              className="w-[240px] h-[240px] object-contain opacity-90 select-none pointer-events-none relative z-10"
-            />
-          </div>
+          <img
+            src={Logo}
+            alt="BlocNexus Security Shield"
+            className="w-[230px] h-[230px] object-contain opacity-80 filter brightness-50 contrast-125 select-none pointer-events-none relative z-10"
+          />
         </div>
       </div>
 

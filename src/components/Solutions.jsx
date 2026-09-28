@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 
 /* ───────────── Chain Logos (SVG icons) ───────────── */
 const CHAINS = [
@@ -16,7 +16,7 @@ const CHAINS = [
   <svg key="link" viewBox="0 0 24 24" className="w-3.5 h-3.5"><path fill="#375BD2" d="M12 2l8.5 4.9v9.8L12 21.5l-8.5-4.8V6.9L12 2zm0 3.4L6 8.9v6.2l6 3.5 6-3.5V8.9l-6-3.5z"/></svg>,
 ];
 
-/* ───────────── Canvas Globe Animation ───────────── */
+/* ───────────── Canvas Globe Animation (Monochrome Silver/White) ───────────── */
 const PureGlobe = memo(function PureGlobe() {
   const canvasRef = useRef(null);
   const visRef = useRef(false);
@@ -59,7 +59,7 @@ const PureGlobe = memo(function PureGlobe() {
       const cx = w / 2, cy = h / 2, R = Math.min(w, h) * 0.40;
 
       // Outer ring
-      ctx.strokeStyle = "rgba(59, 130, 246, 0.25)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.18)";
       ctx.lineWidth = 0.8;
       ctx.beginPath(); ctx.arc(cx, cy, R * 1.06, 0, Math.PI * 2); ctx.stroke();
 
@@ -82,7 +82,7 @@ const PureGlobe = memo(function PureGlobe() {
           const a = fn[i], b = fn[j];
           const d = Math.hypot(a.sx - b.sx, a.sy - b.sy);
           if (d < R * 0.55) {
-            ctx.strokeStyle = `rgba(59, 130, 246, ${(1 - d / (R * 0.55)) * 0.3 * a.z})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - d / (R * 0.55)) * 0.22 * a.z})`;
             ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
           }
         }
@@ -96,13 +96,13 @@ const PureGlobe = memo(function PureGlobe() {
 
         if (p.node && f) {
           const nr = 2 + p.z * 1.2;
-          ctx.fillStyle = `rgba(59, 130, 246, ${a * 0.4})`;
+          ctx.fillStyle = `rgba(255, 255, 255, ${a * 0.3})`;
           ctx.beginPath(); ctx.arc(p.sx, p.sy, nr * 2.2, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
           ctx.beginPath(); ctx.arc(p.sx, p.sy, nr, 0, Math.PI * 2); ctx.fill();
         } else {
           const dr = f ? 1.2 + p.z * 0.5 : 0.7;
-          ctx.fillStyle = f ? `rgba(255, 255, 255, ${a * 0.6})` : `rgba(255, 255, 255, ${a * 0.15})`;
+          ctx.fillStyle = f ? `rgba(255, 255, 255, ${a * 0.5})` : `rgba(255, 255, 255, ${a * 0.15})`;
           ctx.beginPath(); ctx.arc(p.sx, p.sy, dr, 0, Math.PI * 2); ctx.fill();
         }
       }
@@ -124,7 +124,7 @@ const PureGlobe = memo(function PureGlobe() {
 const OrbitRing = memo(function OrbitRing() {
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="relative rounded-full border border-dashed border-zinc-700/60" style={{ width: "88%", height: "88%", animation: "spin 38s linear infinite reverse" }}>
+      <div className="relative rounded-full border border-dashed border-zinc-800" style={{ width: "88%", height: "88%", animation: "spin 38s linear infinite reverse" }}>
         {CHAINS.map((svg, i) => {
           const rad = ((i / CHAINS.length) * 360 * Math.PI) / 180;
           const x = 50 + 50 * Math.cos(rad);
@@ -132,7 +132,7 @@ const OrbitRing = memo(function OrbitRing() {
           return (
             <div key={i} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${x}%`, top: `${y}%` }}>
               <div style={{ animation: "spin 38s linear infinite" }}>
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-900 border border-zinc-700 shadow-md flex items-center justify-center">{svg}</div>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-900 border border-zinc-800 shadow-md flex items-center justify-center">{svg}</div>
               </div>
             </div>
           );
@@ -228,31 +228,26 @@ export default function SolutionsSection() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="w-full min-w-full bg-zinc-950 text-white py-16 md:py-24 relative overflow-hidden border-t border-b border-zinc-800 select-none"
     >
-      {/* ── TECHNICAL GRID BACKGROUND OVERLAY ── */}
+      {/* ── TECHNICAL GRID BACKGROUND OVERLAY (NEUTRAL MONOCHROME) ── */}
       <div
-        className="absolute inset-0 pointer-events-none z-0 opacity-40"
+        className="absolute inset-0 pointer-events-none z-0 opacity-25"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.12) 0%, transparent 70%),
             linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px)
           `,
-          backgroundSize: "100% 100%, 40px 40px, 40px 40px",
+          backgroundSize: "40px 40px, 40px 40px",
         }}
       />
 
       {/* FULL WIDTH CONTAINER */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 w-full">
 
-        {/* Section Header */}
+        {/* Section Header (NO CAPABILITIES TAG, CLEAN MONOCHROME) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6 pb-8 border-b border-zinc-800">
           <div className="max-w-3xl">
-            <span className="text-blue-500 font-mono text-xs uppercase tracking-widest block mb-3 font-semibold">
-              // Institutional Security Capabilities
-            </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-tight">
-              End-to-End Security for{" "}
-              <span className="text-blue-500 font-light">Web3 Protocols</span>
+              End-to-End Security for Web3 Protocols
             </h2>
           </div>
           <p className="text-zinc-400 text-xs sm:text-sm font-light max-w-md leading-relaxed">
@@ -272,7 +267,7 @@ export default function SolutionsSection() {
           </div>
 
           {/* RIGHT COLUMN — Capability Details & Deliverables */}
-          <div className="lg:col-span-7 flex flex-col justify-between min-h-[420px] bg-zinc-900/80 border border-zinc-800 p-6 sm:p-8 md:p-10 shadow-2xl">
+          <div className="lg:col-span-7 flex flex-col justify-between min-h-[420px] bg-zinc-900/90 border border-zinc-800 p-6 sm:p-8 md:p-10 shadow-2xl">
 
             <AnimatePresence mode="wait" custom={dir}>
               <motion.div
@@ -284,12 +279,29 @@ export default function SolutionsSection() {
                 transition={{ duration: 0.18, ease: "easeOut" }}
                 className="flex flex-col flex-1"
               >
-                {/* Index & Section tag */}
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="text-xs font-mono font-medium tracking-widest text-blue-400">
+                {/* TOP BAR INSIDE CARD: INDEX (LEFT) & SCROLL ARROWS (TOP RIGHT) */}
+                <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-zinc-800">
+                  <span className="text-xs font-mono font-medium tracking-widest text-zinc-400">
                     CAPABILITY {s.tag} / {String(SOLUTIONS.length).padStart(2, "0")}
                   </span>
-                  <div className="flex-1 h-px bg-zinc-800" />
+
+                  {/* TOP RIGHT SCROLL LEFT & RIGHT ARROWS */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={prev}
+                      aria-label="Previous capability"
+                      className="w-9 h-9 border border-zinc-700 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    >
+                      <ArrowLeft size={16} />
+                    </button>
+                    <button
+                      onClick={next}
+                      aria-label="Next capability"
+                      className="w-9 h-9 border border-zinc-700 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    >
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
                 </div>
 
                 {/* Capability Title */}
@@ -311,9 +323,9 @@ export default function SolutionsSection() {
                     {s.deliverables.map((d, i) => (
                       <div
                         key={i}
-                        className="flex items-start gap-3 text-xs sm:text-sm font-light text-zinc-200 leading-relaxed bg-zinc-950/60 border border-zinc-800 p-3"
+                        className="flex items-start gap-3 text-xs sm:text-sm font-light text-zinc-200 leading-relaxed bg-zinc-950/70 border border-zinc-800 p-3"
                       >
-                        <span className="font-mono text-blue-400 text-xs shrink-0 mt-0.5 font-medium">
+                        <span className="font-mono text-zinc-400 text-xs shrink-0 mt-0.5 font-medium">
                           0{i + 1}.
                         </span>
                         <span>{d}</span>
@@ -334,39 +346,24 @@ export default function SolutionsSection() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Bottom Controls Bar */}
+            {/* Bottom Bar: Progress Dots Indicator */}
             <div className="flex items-center justify-between pt-6 border-t border-zinc-800 mt-6">
-              {/* Progress Dots */}
               <div className="flex gap-2">
                 {SOLUTIONS.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => { setDir(i > idx ? 1 : -1); setIdx(i); }}
                     className={`h-1.5 transition-all duration-200 cursor-pointer ${
-                      idx === i ? "w-8 bg-blue-500" : "w-2 bg-zinc-700 hover:bg-zinc-500"
+                      idx === i ? "w-8 bg-white" : "w-2 bg-zinc-700 hover:bg-zinc-500"
                     }`}
                     aria-label={`View capability ${i + 1}`}
                   />
                 ))}
               </div>
 
-              {/* Navigation Arrows */}
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={prev}
-                  aria-label="Previous capability"
-                  className="w-9 h-9 border border-zinc-700 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-                >
-                  <ArrowLeft size={16} />
-                </button>
-                <button
-                  onClick={next}
-                  aria-label="Next capability"
-                  className="w-9 h-9 border border-zinc-700 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-                >
-                  <ArrowRight size={16} />
-                </button>
-              </div>
+              <span className="text-[11px] font-mono text-zinc-500">
+                {idx + 1} of {SOLUTIONS.length}
+              </span>
             </div>
 
           </div>
