@@ -20,31 +20,36 @@ export const productsColumn = {
       title: "Wallet Detection",
       desc: "End-user wallet security & malicious dApp scanning",
       icon: "Wallet",
-      href: "/request-a-quote",
+      href: "/wallet-detection",
+      badge: "Live",
     },
     {
       title: "NFT Detection",
       desc: "Malicious NFT airdrop & drainer campaign scanning",
       icon: "ImageOff",
-      href: "/request-a-quote",
+      href: "/nft-detection",
+      badge: "Live",
     },
     {
       title: "Transaction Fraud Detection",
       desc: "Real-time fraud, phishing & social engineering prevention",
       icon: "ShieldAlert",
-      href: "/request-a-quote",
+      href: "/transaction",
+      badge: "Live",
     },
     {
       title: "Gas Optimization",
       desc: "Contract gas profiling & execution efficiency analysis",
       icon: "Fuel",
-      href: "/request-a-quote",
+      href: "/gas-optimization",
+      badge: "Live",
     },
     {
       title: "Find Flaws in Contract",
       desc: "Automated vulnerability scanning & exploit detection",
       icon: "SearchCode",
-      href: "/request-a-quote",
+      href: "/find-flaws",
+      badge: "Live",
     },
   ],
 };
@@ -58,25 +63,29 @@ export const servicesColumn = {
       title: "Smart Contract Auditing",
       desc: "Manual & formal verification of smart contracts",
       icon: "FileSearch",
-      href: "/request-a-quote",
+      href: "/smart-contract-auditing",
+      badge: "Live",
     },
     {
       title: "Penetration Testing",
       desc: "Real-world adversarial attack simulations",
       icon: "Target",
-      href: "/request-a-quote",
+      href: "/penetration-testing",
+      badge: "Live",
     },
     {
       title: "Consultation & Architecture",
       desc: "Expert security guidance & protocol design review",
       icon: "BrainCircuit",
-      href: "/request-a-quote",
+      href: "/consultation-architecture",
+      badge: "Live",
     },
     {
       title: "Static Analysis & Monitoring",
       desc: "Automated scanning & continuous on-chain monitoring",
       icon: "Activity",
-      href: "/request-a-quote",
+      href: "/static-analysis",
+      badge: "Live",
     },
   ],
 };
@@ -97,11 +106,20 @@ export const solanaChains = [
   { name: "Solana", ticker: "SOL" },
 ];
 
+/* ─── COMPANY DROPDOWN LINKS ─── */
+export const companyLinks = [
+  { name: "About Us",       desc: "Our mission, research & security team", icon: "Info",                   href: "/about-us" },
+  { name: "Careers",        desc: "Join our security research team",       icon: "Briefcase",             href: "/careers" },
+  { name: "Contact Us",     desc: "Get in touch with our security team",   icon: "Mail",                  href: "/request-a-quote" },
+  { name: "Report an Issue", desc: "Vulnerability & bug disclosures",      icon: "MessageSquareWarning",  href: "/request-a-quote" },
+];
+
 /* ─── TOP-LEVEL NAV LINKS ─── */
 
 export const navLinks = [
-  { name: "Solutions", hasMega: true },
-  { name: "About",     href: "/about-us" },
+  { name: "Products",  hasProductsDropdown: true },
+  { name: "Services",  hasServicesDropdown: true },
+  { name: "Company",   hasCompanyDropdown: true },
   { name: "Blogs",     href: "/blogs" },
   { name: "Contact",   href: "/request-a-quote" },
 ];

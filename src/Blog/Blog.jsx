@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Navigate } from "react-router-dom";
 
 import BlogHero from "./components/BlogHero";
 import FeaturedBlog from "./components/FeaturedBlog";
@@ -10,7 +11,6 @@ import { getPublishedPosts } from "./api/blogApi";
 import { adaptPost } from "./utils/postAdapters";
 
 import PageLoader from "../components/PageLoader";
-import Lottie404 from "../components/Lottie404";
 
 export default function Blog() {
   const [search, setSearch] = useState("");
@@ -41,7 +41,6 @@ export default function Blog() {
       setLoading(true);
       setError(null);
       try {
-        // Backend returns up to 40 most recent published posts (newest first).
         const page = await getPublishedPosts(0, 40);
         const items = page?.content ?? [];
         if (!cancelled) {
@@ -88,32 +87,54 @@ export default function Blog() {
   }
 
   if (error) {
-    return <Lottie404 onRetry={fetchPosts} />;
+    return <Navigate to="/404" replace />;
   }
 
   return (
-    <main className="bg-white min-h-screen">
-      <BlogHero search={search} setSearch={setSearch} posts={posts} />
+    <main
+      style={{ fontFamily: "'Inter', sans-serif" }}
+      className="bg-[#FAFAFA] min-h-screen text-zinc-900 relative"
+    >
+      {/* ── SUBTLE TECHNICAL GRID BACKGROUND ── */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "32px 32px",
+        }}
+      />
 
-      {featuredBlog && <FeaturedBlog blog={featuredBlog} />}
+      <div className="relative z-10">
+        <BlogHero search={search} setSearch={setSearch} posts={posts} />
 
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
-            <CategoryFilter active={activeCategory} setActive={setActiveCategory} />
+        {featuredBlog && <FeaturedBlog blog={featuredBlog} />}
+
+        <section className="py-12 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-8 flex items-center justify-between pb-3 border-b border-zinc-300">
+              <span className="text-xs font-mono uppercase tracking-widest text-zinc-900 font-semibold">
+                Filter by Topic
+              </span>
+              <CategoryFilter active={activeCategory} setActive={setActiveCategory} />
+            </div>
+
+            {filteredBlogs.length === 0 ? (
+              <div className="text-center py-20 bg-white border border-zinc-300">
+                <p className="text-zinc-600 font-light text-sm">
+                  No articles found matching "{search}".
+                </p>
+              </div>
+            ) : (
+              <BlogGrid blogs={filteredBlogs} />
+            )}
           </div>
+        </section>
 
-          {filteredBlogs.length === 0 ? (
-            <p className="text-center text-gray-500 py-16 font-light">
-              No articles found.
-            </p>
-          ) : (
-            <BlogGrid blogs={filteredBlogs} />
-          )}
-        </div>
-      </section>
-
-      <Newsletter />
+        <Newsletter />
+      </div>
     </main>
   );
 }

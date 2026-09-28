@@ -5,6 +5,7 @@
 export { default as MegaDropdown } from "./MegaDropdown";
 export {
   navLinks,
+  companyLinks,
   productsColumn,
   servicesColumn,
   ethereumChains,

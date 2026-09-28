@@ -9,14 +9,24 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ChevronRight, X } from "lucide-react";
+import { ChevronDown, ChevronRight, X, Info, FileEdit, Megaphone, Briefcase, Mail, MessageSquareWarning } from "lucide-react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
-import { productsColumn, servicesColumn, navLinks } from "./megamenu/megaMenuData";
+import { productsColumn, servicesColumn, navLinks, companyLinks } from "./megamenu/megaMenuData";
 import iconMap from "./megamenu/iconMap";
+
+const companyIconMap = {
+  Info: Info,
+  FileEdit: FileEdit,
+  Megaphone: Megaphone,
+  Briefcase: Briefcase,
+  Mail: Mail,
+  MessageSquareWarning: MessageSquareWarning
+};
 
 export default function MobileMenu({ isOpen, onClose, logo, onRequestQuote }) {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,7 +52,7 @@ export default function MobileMenu({ isOpen, onClose, logo, onRequestQuote }) {
   const columns = [productsColumn, servicesColumn];
 
   /* Non-mega nav links */
-  const plainLinks = navLinks.filter((l) => !l.hasMega);
+  const plainLinks = navLinks.filter((l) => !l.hasMega && !l.hasCompanyDropdown);
 
   return (
     <AnimatePresence>
@@ -81,7 +91,7 @@ export default function MobileMenu({ isOpen, onClose, logo, onRequestQuote }) {
                 className="flex items-center gap-2"
               >
                 <img src={logo} alt="BlocNexus" className="h-[52px] w-[52px] object-contain" />
-                <span className="text-[20px] tracking-[0.12em] uppercase text-[#C7CDD8] font-light">
+                <span style={{ fontFamily: "'Inter', sans-serif" }} className="text-[22px] tracking-tight text-white font-light">
                   BlocNexus
                 </span>
               </Link>
@@ -124,7 +134,6 @@ export default function MobileMenu({ isOpen, onClose, logo, onRequestQuote }) {
                         <div className="pl-2 pt-2 pb-1 space-y-1">
                           {columns.map((col) => (
                             <div key={col.heading} className="mb-3">
-                              {/* Column heading */}
                               <p className="text-[10px] font-light uppercase tracking-[0.18em] text-[#9CA3AF]/70 px-3 mb-1.5">
                                 {col.heading}
                               </p>
@@ -163,6 +172,60 @@ export default function MobileMenu({ isOpen, onClose, logo, onRequestQuote }) {
                               })}
                             </div>
                           ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </li>
+
+                {/* ── COMPANY (accordion) ── */}
+                <li>
+                  <button
+                    onClick={() => setCompanyOpen(!companyOpen)}
+                    className="
+                      w-full flex items-center justify-between
+                      py-4 text-white text-[15px] font-light
+                      border-b border-white/5 cursor-pointer
+                    "
+                  >
+                    Company
+                    {companyOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                  </button>
+
+                  <AnimatePresence>
+                    {companyOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-2 pt-2 pb-1 space-y-1">
+                          {companyLinks.map((item, i) => {
+                            const IconComponent = companyIconMap[item.icon] || Info;
+                            return (
+                              <button
+                                key={i}
+                                onClick={() => handleLinkClick(item.href)}
+                                className="
+                                  flex items-center gap-2.5 w-full text-left
+                                  px-3 py-2 rounded-lg
+                                  hover:bg-white/[0.04] transition
+                                  cursor-pointer
+                                "
+                              >
+                                <div className="shrink-0 w-6 h-6 rounded-md bg-white/[0.03] border border-white/[0.06] flex items-center justify-center">
+                                  <IconComponent size={12} className="text-[#9CA3AF]" />
+                                </div>
+                                <div>
+                                  <span className="text-[13px] font-light text-white/90">
+                                    {item.name}
+                                  </span>
+                                  <p className="text-[11px] font-light text-[#9CA3AF]/60 line-clamp-1">{item.desc}</p>
+                                </div>
+                              </button>
+                            );
+                          })}
                         </div>
                       </motion.div>
                     )}

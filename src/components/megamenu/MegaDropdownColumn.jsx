@@ -14,8 +14,8 @@ export default function MegaDropdownColumn({ heading, items, onItemClick }) {
       <h4
         style={{ fontFamily: "'Inter', sans-serif" }}
         className="
-          text-[10px] font-light uppercase tracking-[0.18em]
-          text-[#9CA3AF]/70 mb-3 px-3
+          text-[10px] font-medium uppercase tracking-[0.18em]
+          text-zinc-500 mb-3 px-3
         "
       >
         {heading}

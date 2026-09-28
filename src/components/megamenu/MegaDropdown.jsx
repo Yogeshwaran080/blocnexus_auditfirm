@@ -56,9 +56,10 @@ export default function MegaDropdown({ onClose }) {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="
         fixed top-16 left-0 right-0 z-40
-        bg-[#090A0E]/98 backdrop-blur-2xl
-        border-b border-white/[0.08]
-        shadow-[0_24px_80px_-12px_rgba(0,0,0,0.85)]
+        bg-white/98 backdrop-blur-2xl
+        border-b border-zinc-200/90
+        shadow-[0_24px_80px_-12px_rgba(0,0,0,0.12)]
+        text-zinc-900
       "
       onMouseLeave={onClose}
     >

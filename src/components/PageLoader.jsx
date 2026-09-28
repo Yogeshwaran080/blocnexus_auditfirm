@@ -12,7 +12,7 @@ export default function PageLoader({ fullScreen = true }) {
           rounded-full
           border-[2.5px] border-white/15
           border-t-white
-          animate-spin
+          animate-[spin_0.5s_linear_infinite]
         "
       />
     </div>
