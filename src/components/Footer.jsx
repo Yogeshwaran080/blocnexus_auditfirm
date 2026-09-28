@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/dotted_shield_no_bg.svg";
+import { Copyright } from "lucide-react";
 
 const FOOTER_LINKS = {
   Products: [
@@ -87,27 +88,44 @@ export default function Footer() {
   };
 
   return (
-    <footer style={{ fontFamily: "'Inter', sans-serif" }} className="bg-white border-t border-gray-200 overflow-hidden select-none">
+    <footer
+      style={{ fontFamily: "'Inter', sans-serif" }}
+      className="relative bg-white border-t border-zinc-200 overflow-hidden select-none"
+    >
+      {/* ── SUBTLE GLOBAL GRID & GLOBE BACKGROUND OVERLAY ── */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-40"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 85% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 60%),
+            linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: "100% 100%, 32px 32px, 32px 32px",
+        }}
+      />
+
       {/* TOP SECTION */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 items-start">
         {/* LINKS COLUMNS */}
         {Object.entries(FOOTER_LINKS).map(([section, links]) => (
           <div key={section}>
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 mb-4">
+            {/* FIRST LETTER UPPERCASE, REST LOWERCASE, BLACK COLOR */}
+            <h3 className="text-base font-semibold text-black tracking-tight mb-5">
               {section}
             </h3>
 
-            <ul className="space-y-3.5">
+            <ul className="space-y-4">
               {links.map((link, i) => (
                 <li key={i}>
                   <button
                     onClick={() => handleLinkClick(link.path)}
                     className="text-left group w-full cursor-pointer"
                   >
-                    <h4 className="text-xs font-medium text-black group-hover:text-blue-600 transition-colors">
+                    <h4 className="text-xs font-medium text-zinc-900 group-hover:text-blue-600 transition-colors">
                       {link.title}
                     </h4>
-                    <p className="text-[11px] font-light text-gray-500 mt-0.5 leading-snug line-clamp-1">
+                    <p className="text-[11px] font-light text-zinc-500 mt-0.5 leading-snug line-clamp-1">
                       {link.desc}
                     </p>
                   </button>
@@ -117,41 +135,47 @@ export default function Footer() {
           </div>
         ))}
 
-        {/* SHIELD LOGO GRAPHIC */}
-        <div className="hidden lg:flex justify-end items-center h-full pt-4">
-          <img
-            src={Logo}
-            alt="Security Shield"
-            className="w-[280px] h-[280px] object-contain opacity-85 select-none pointer-events-none"
-          />
+        {/* PROFESSIONAL SHIELD LOGO GRAPHIC WITH GLOBE ILLUMINATION */}
+        <div className="hidden lg:flex flex-col justify-between items-end h-full pt-2 pr-2 relative">
+          <div className="relative">
+            {/* Subtle Globe Glow behind Shield */}
+            <div className="absolute -inset-4 rounded-full bg-blue-500/10 blur-2xl pointer-events-none" />
+            <img
+              src={Logo}
+              alt="BlocNexus Security Shield"
+              className="w-[240px] h-[240px] object-contain opacity-90 select-none pointer-events-none relative z-10"
+            />
+          </div>
         </div>
       </div>
 
       {/* DIVIDER */}
-      <div className="border-t border-gray-200" />
+      <div className="relative z-10 border-t border-zinc-200" />
 
-      {/* BOTTOM BAR */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
-        <p className="text-xs font-light text-gray-500">
-          © {new Date().getFullYear()} BlocNexus Security. All rights reserved.
-        </p>
+      {/* BOTTOM BAR WITH SINGLE COPYRIGHT ICON */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* Copyright formatted with single Copyright icon */}
+        <div className="flex items-center gap-1.5 text-xs font-light text-zinc-600">
+          <Copyright size={14} className="text-zinc-800 shrink-0" />
+          <span>{new Date().getFullYear()} BlocNexus Security Inc. All rights reserved.</span>
+        </div>
 
-        <div className="flex items-center gap-5 text-xs font-light">
+        <div className="flex items-center gap-6 text-xs font-light">
           <button
             onClick={() => handleLinkClick("/about-us")}
-            className="text-gray-500 hover:text-blue-600 transition cursor-pointer"
+            className="text-zinc-600 hover:text-black transition cursor-pointer"
           >
             Security Policy
           </button>
           <button
             onClick={() => handleLinkClick("/about-us")}
-            className="text-gray-500 hover:text-blue-600 transition cursor-pointer"
+            className="text-zinc-600 hover:text-black transition cursor-pointer"
           >
             Privacy Policy
           </button>
           <button
             onClick={() => handleLinkClick("/about-us")}
-            className="text-gray-500 hover:text-blue-600 transition cursor-pointer"
+            className="text-zinc-600 hover:text-black transition cursor-pointer"
           >
             Terms of Service
           </button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 /* ───────────── Chain Logos (SVG icons) ───────────── */
 const CHAINS = [
@@ -37,14 +37,14 @@ const PureGlobe = memo(function PureGlobe() {
     };
     setSize();
 
-    const N = 280;
+    const N = 300;
     const pts = [];
     const PHI = Math.PI * (3 - Math.sqrt(5));
     for (let i = 0; i < N; i++) {
       const y = 1 - (i / (N - 1)) * 2;
       const r = Math.sqrt(1 - y * y);
       const t = PHI * i;
-      pts.push({ x: Math.cos(t) * r, y, z: Math.sin(t) * r, node: i % 20 === 0 });
+      pts.push({ x: Math.cos(t) * r, y, z: Math.sin(t) * r, node: i % 18 === 0 });
     }
 
     let rotY = 0;
@@ -56,12 +56,12 @@ const PureGlobe = memo(function PureGlobe() {
       rotY += 0.004;
       const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
       ctx.clearRect(0, 0, w, h);
-      const cx = w / 2, cy = h / 2, R = Math.min(w, h) * 0.38;
+      const cx = w / 2, cy = h / 2, R = Math.min(w, h) * 0.40;
 
       // Outer ring
-      ctx.strokeStyle = "rgba(256,256,256,0.12)";
-      ctx.lineWidth = 0.7;
-      ctx.beginPath(); ctx.arc(cx, cy, R * 1.05, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = "rgba(59, 130, 246, 0.25)";
+      ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.arc(cx, cy, R * 1.06, 0, Math.PI * 2); ctx.stroke();
 
       const proj = [];
       for (let i = 0; i < N; i++) {
@@ -82,7 +82,7 @@ const PureGlobe = memo(function PureGlobe() {
           const a = fn[i], b = fn[j];
           const d = Math.hypot(a.sx - b.sx, a.sy - b.sy);
           if (d < R * 0.55) {
-            ctx.strokeStyle = `rgba(255,255,255,${(1 - d / (R * 0.55)) * 0.15 * a.z})`;
+            ctx.strokeStyle = `rgba(59, 130, 246, ${(1 - d / (R * 0.55)) * 0.3 * a.z})`;
             ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
           }
         }
@@ -92,17 +92,17 @@ const PureGlobe = memo(function PureGlobe() {
       for (let i = 0; i < proj.length; i++) {
         const p = proj[i];
         const f = p.z > 0;
-        const a = f ? 0.25 + p.z * 0.75 : 0.05 + (p.z + 1) * 0.05;
+        const a = f ? 0.3 + p.z * 0.7 : 0.05 + (p.z + 1) * 0.05;
 
         if (p.node && f) {
-          const nr = 2 + p.z * 1;
-          ctx.fillStyle = `rgba(255,255,255,${a * 0.3})`;
-          ctx.beginPath(); ctx.arc(p.sx, p.sy, nr * 2, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = `rgba(255,255,255,${a})`;
+          const nr = 2 + p.z * 1.2;
+          ctx.fillStyle = `rgba(59, 130, 246, ${a * 0.4})`;
+          ctx.beginPath(); ctx.arc(p.sx, p.sy, nr * 2.2, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
           ctx.beginPath(); ctx.arc(p.sx, p.sy, nr, 0, Math.PI * 2); ctx.fill();
         } else {
-          const dr = f ? 1.1 + p.z * 0.5 : 0.7;
-          ctx.fillStyle = f ? `rgba(255,255,255,${a * 0.5})` : `rgba(255,255,255,${a * 0.2})`;
+          const dr = f ? 1.2 + p.z * 0.5 : 0.7;
+          ctx.fillStyle = f ? `rgba(255, 255, 255, ${a * 0.6})` : `rgba(255, 255, 255, ${a * 0.15})`;
           ctx.beginPath(); ctx.arc(p.sx, p.sy, dr, 0, Math.PI * 2); ctx.fill();
         }
       }
@@ -124,7 +124,7 @@ const PureGlobe = memo(function PureGlobe() {
 const OrbitRing = memo(function OrbitRing() {
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="relative rounded-full border border-dashed border-white/10" style={{ width: "88%", height: "88%", animation: "spin 38s linear infinite reverse" }}>
+      <div className="relative rounded-full border border-dashed border-zinc-700/60" style={{ width: "88%", height: "88%", animation: "spin 38s linear infinite reverse" }}>
         {CHAINS.map((svg, i) => {
           const rad = ((i / CHAINS.length) * 360 * Math.PI) / 180;
           const x = 50 + 50 * Math.cos(rad);
@@ -132,7 +132,7 @@ const OrbitRing = memo(function OrbitRing() {
           return (
             <div key={i} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${x}%`, top: `${y}%` }}>
               <div style={{ animation: "spin 38s linear infinite" }}>
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/80 border border-white/15 shadow-sm flex items-center justify-center">{svg}</div>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-900 border border-zinc-700 shadow-md flex items-center justify-center">{svg}</div>
               </div>
             </div>
           );
@@ -147,9 +147,9 @@ const SOLUTIONS = [
   {
     tag: "01",
     title: "Smart Contract Security Audit",
-    desc: "Our auditors perform rigorous, line-by-line manual inspection of every smart contract function, paired with formal mathematical verification, to surface critical logic flaws, reentrancy vectors, and economic exploits — before your protocol ever touches mainnet.",
+    desc: "Rigorous manual inspection of every smart contract function paired with formal mathematical verification to eliminate reentrancy, access control flaws, and economic exploit vectors before mainnet release.",
     deliverables: [
-      "Vulnerability classification report (Critical / High / Medium / Low)",
+      "Full vulnerability classification report (Critical / High / Medium / Low)",
       "Formal verification results with proof of invariant correctness",
       "Remediation guidance with code-level fix recommendations",
     ],
@@ -158,7 +158,7 @@ const SOLUTIONS = [
   {
     tag: "02",
     title: "Protocol Penetration Testing",
-    desc: "We simulate real-world adversarial attacks across your entire attack surface — smart contracts, cross-chain bridges, dApp frontends, backend RPC relays, and validator infrastructure — using the same tools and techniques real attackers deploy.",
+    desc: "Simulating real-world adversarial attacks across smart contracts, cross-chain bridges, dApp frontends, and validator infrastructure using identical tooling and techniques active exploiters employ.",
     deliverables: [
       "Attack narrative report with full exploitation chain documentation",
       "Risk-prioritized findings with CVSS scoring & impact analysis",
@@ -169,7 +169,7 @@ const SOLUTIONS = [
   {
     tag: "03",
     title: "Code Review & Architecture Assessment",
-    desc: "We conduct a full-stack architectural review — validating upgradeable proxy patterns, modular access control hierarchies, cross-contract data flows, and protocol invariant boundaries — to ensure your codebase is production-ready and resistant to systemic failures.",
+    desc: "Full-stack architectural review validating upgradeable proxy patterns, access control hierarchies, cross-contract state flows, and protocol invariant boundaries for enterprise readiness.",
     deliverables: [
       "Architecture risk matrix covering proxies, governance & state",
       "Upgrade safety assessment for UUPS, Transparent & Diamond proxies",
@@ -180,7 +180,7 @@ const SOLUTIONS = [
   {
     tag: "04",
     title: "Continuous On-Chain Monitoring",
-    desc: "We integrate automated vulnerability scanning into your CI/CD pipeline and deploy real-time on-chain monitoring agents that watch mempool activity, detect anomalous transaction patterns, and trigger circuit breakers before exploits reach block confirmation.",
+    desc: "Deploying real-time on-chain monitoring agents that inspect mempool activity, track anomalous transaction vectors, and trigger automated circuit breakers before block inclusion.",
     deliverables: [
       "24/7 automated threat detection with real-time incident escalation",
       "Mempool surveillance for sandwich attacks & MEV extraction",
@@ -191,7 +191,7 @@ const SOLUTIONS = [
   {
     tag: "05",
     title: "Threat Modeling & Economic Simulation",
-    desc: "We apply mathematical risk modeling and adversarial game-theory simulations to map cross-protocol contagion paths, MEV extraction opportunities, liquidation cascades, and oracle manipulation vectors — giving your team a complete pre-deployment risk picture.",
+    desc: "Mathematical risk modeling and adversarial game-theory simulations mapping cross-protocol contagion paths, MEV extraction opportunities, and oracle manipulation vectors.",
     deliverables: [
       "Agent-based economic stress test results under extreme markets",
       "Cross-protocol dependency and composability risk mapping",
@@ -202,7 +202,7 @@ const SOLUTIONS = [
   {
     tag: "06",
     title: "Incident Response & Protocol Hardening",
-    desc: "We establish institutional-grade incident response protocols, coordinate white-hat fund rescue operations during active exploits, and harden your validator infrastructure with HSM key management, multi-sig governance, and battle-tested operational security procedures.",
+    desc: "Establishing institutional incident response protocols, white-hat fund rescue procedures, and hardened validator key architecture with HSM, MPC, and multi-sig controls.",
     deliverables: [
       "Incident response playbook with escalation matrix & war room flows",
       "Key management architecture review covering HSM, MPC & multi-sig",
@@ -226,129 +226,151 @@ export default function SolutionsSection() {
     <section
       id="solutions"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="w-full bg-white text-gray-900 py-12 md:py-16 px-4 sm:px-6 md:px-8 overflow-hidden border-t border-gray-100"
+      className="w-full min-w-full bg-zinc-950 text-white py-16 md:py-24 relative overflow-hidden border-t border-b border-zinc-800 select-none"
     >
-      <div className="max-w-7xl mx-auto">
+      {/* ── TECHNICAL GRID BACKGROUND OVERLAY ── */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-40"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.12) 0%, transparent 70%),
+            linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "100% 100%, 40px 40px, 40px 40px",
+        }}
+      />
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-10 gap-4 px-2">
-          <div className="max-w-2xl">
-            <span className="text-[11px] font-mono font-light tracking-[0.25em] text-gray-500 uppercase mb-2 block">
-              Our Capabilities
+      {/* FULL WIDTH CONTAINER */}
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 w-full">
+
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6 pb-8 border-b border-zinc-800">
+          <div className="max-w-3xl">
+            <span className="text-blue-500 font-mono text-xs uppercase tracking-widest block mb-3 font-semibold">
+              // Institutional Security Capabilities
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-[38px] font-light tracking-tight text-gray-900 leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-tight">
               End-to-End Security for{" "}
-              <span className="text-blue-600 font-light">Web3 Protocols</span>
+              <span className="text-blue-500 font-light">Web3 Protocols</span>
             </h2>
           </div>
-          <p className="text-gray-500 text-xs sm:text-sm font-light max-w-md leading-relaxed">
-            Trusted by protocols managing billions in total value locked. Our team brings institutional-grade security methodology to every engagement.
+          <p className="text-zinc-400 text-xs sm:text-sm font-light max-w-md leading-relaxed">
+            Trusted by lead Web3 teams and protocols. We apply multi-layered threat analysis, mathematical verification, and real-time execution shielding to secure digital asset infrastructure.
           </p>
         </div>
 
-        {/* Full-Width Black Box Container with Slight Outer Padding */}
-        <div className="w-full">
-          <div className="rounded-2xl sm:rounded-3xl bg-gray-950 p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-2xl border border-gray-900">
+        {/* ── MAIN CONTENT GRID: 3D GLOBE (LEFT) & CAPABILITIES CAROUSEL (RIGHT) ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-            {/* Corner accent */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gray-800/20 rounded-bl-[160px] pointer-events-none" />
+          {/* LEFT COLUMN — 3D Globe & Chain Orbit Ring */}
+          <div className="lg:col-span-5 flex items-center justify-center py-4 lg:py-0">
+            <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] md:w-[420px] md:h-[420px]">
+              <PureGlobe />
+              <OrbitRing />
+            </div>
+          </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
+          {/* RIGHT COLUMN — Capability Details & Deliverables */}
+          <div className="lg:col-span-7 flex flex-col justify-between min-h-[420px] bg-zinc-900/80 border border-zinc-800 p-6 sm:p-8 md:p-10 shadow-2xl">
 
-              {/* LEFT INSIDE BLACK BOX — Globe & Orbit Ring */}
-              <div className="lg:col-span-5 flex items-center justify-center py-2 lg:py-0">
-                <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[360px] md:h-[360px]">
-                  <PureGlobe />
-                  <OrbitRing />
+            <AnimatePresence mode="wait" custom={dir}>
+              <motion.div
+                key={idx}
+                custom={dir}
+                initial={(d) => ({ x: d > 0 ? 16 : -16, opacity: 0 })}
+                animate={{ x: 0, opacity: 1 }}
+                exit={(d) => ({ x: d > 0 ? -16 : 16, opacity: 0 })}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+                className="flex flex-col flex-1"
+              >
+                {/* Index & Section tag */}
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-xs font-mono font-medium tracking-widest text-blue-400">
+                    CAPABILITY {s.tag} / {String(SOLUTIONS.length).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1 h-px bg-zinc-800" />
                 </div>
-              </div>
 
-              {/* RIGHT INSIDE BLACK BOX — Slide Contents */}
-              <div className="lg:col-span-7 flex flex-col justify-between min-h-[360px]">
+                {/* Capability Title */}
+                <h3 className="text-2xl sm:text-3xl font-light text-white mb-3 tracking-tight leading-tight">
+                  {s.title}
+                </h3>
 
-                <AnimatePresence mode="wait" custom={dir}>
-                  <motion.div
-                    key={idx}
-                    custom={dir}
-                    initial={(d) => ({ x: d > 0 ? 18 : -18, opacity: 0 })}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={(d) => ({ x: d > 0 ? -18 : 18, opacity: 0 })}
-                    transition={{ duration: 0.18, ease: "easeOut" }}
-                    className="flex flex-col flex-1"
-                  >
-                    {/* Top line — tag + total */}
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="text-[11px] font-mono font-light tracking-[0.2em] text-gray-400">
-                        {s.tag} — {String(SOLUTIONS.length).padStart(2, "0")}
-                      </span>
-                      <div className="flex-1 h-px bg-gray-800" />
-                    </div>
+                {/* Description */}
+                <p className="text-zinc-300 font-light text-xs sm:text-sm leading-relaxed mb-6">
+                  {s.desc}
+                </p>
 
-                    {/* Title */}
-                    <h3 className="text-[20px] sm:text-[24px] md:text-[26px] font-light text-white mb-2.5 tracking-tight leading-tight">
-                      {s.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-gray-400 font-light text-[13px] sm:text-[14px] leading-[1.6] mb-5">
-                      {s.desc}
-                    </p>
-
-                    {/* Deliverables List */}
-                    <div className="mb-5">
-                      <span className="text-[10px] font-mono font-light tracking-[0.2em] text-gray-500 uppercase block mb-2.5">
-                        Key Deliverables
-                      </span>
-                      <div className="space-y-2">
-                        {s.deliverables.map((d, i) => (
-                          <div key={i} className="flex items-start gap-2.5 text-[12px] sm:text-[13px] font-light text-gray-300 leading-relaxed bg-white/[0.02] border border-white/[0.05] p-2.5 rounded-lg">
-                            <span className="text-gray-500 font-mono text-[10px] mt-0.5 shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                            <span>{d}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Scope line */}
-                    <div className="pt-3 border-t border-gray-800/80">
-                      <span className="text-[10px] font-mono font-light tracking-[0.2em] text-gray-500 uppercase">Scope</span>
-                      <p className="text-gray-400 text-[12px] sm:text-[13px] mt-1 font-light">{s.scope}</p>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Bottom navigation */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-800/80 mt-5">
-                  {/* Progress dots */}
-                  <div className="flex gap-1.5">
-                    {SOLUTIONS.map((_, i) => (
-                      <button
+                {/* Key Deliverables */}
+                <div className="mb-6">
+                  <span className="text-[10px] font-mono font-semibold tracking-widest text-zinc-400 uppercase block mb-3">
+                    // Key Deliverables
+                  </span>
+                  <div className="space-y-2.5">
+                    {s.deliverables.map((d, i) => (
+                      <div
                         key={i}
-                        onClick={() => { setDir(i > idx ? 1 : -1); setIdx(i); }}
-                        className={`h-1 rounded-full transition-all duration-200 cursor-pointer ${
-                          idx === i ? "w-6 bg-gray-400" : "w-1.5 bg-gray-700 hover:bg-gray-600"
-                        }`}
-                        aria-label={`View capability ${i + 1}`}
-                      />
+                        className="flex items-start gap-3 text-xs sm:text-sm font-light text-zinc-200 leading-relaxed bg-zinc-950/60 border border-zinc-800 p-3"
+                      >
+                        <span className="font-mono text-blue-400 text-xs shrink-0 mt-0.5 font-medium">
+                          0{i + 1}.
+                        </span>
+                        <span>{d}</span>
+                      </div>
                     ))}
                   </div>
-
-                  {/* Arrows */}
-                  <div className="flex items-center gap-2">
-                    <button onClick={prev} aria-label="Previous" className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer">
-                      <ArrowLeft size={14} />
-                    </button>
-                    <button onClick={next} aria-label="Next" className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer">
-                      <ArrowRight size={14} />
-                    </button>
-                  </div>
                 </div>
 
+                {/* Scope line */}
+                <div className="pt-4 border-t border-zinc-800">
+                  <span className="text-[10px] font-mono font-semibold tracking-widest text-zinc-400 uppercase">
+                    Supported Scope
+                  </span>
+                  <p className="text-zinc-300 text-xs font-mono mt-1 font-light">
+                    {s.scope}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Bottom Controls Bar */}
+            <div className="flex items-center justify-between pt-6 border-t border-zinc-800 mt-6">
+              {/* Progress Dots */}
+              <div className="flex gap-2">
+                {SOLUTIONS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { setDir(i > idx ? 1 : -1); setIdx(i); }}
+                    className={`h-1.5 transition-all duration-200 cursor-pointer ${
+                      idx === i ? "w-8 bg-blue-500" : "w-2 bg-zinc-700 hover:bg-zinc-500"
+                    }`}
+                    aria-label={`View capability ${i + 1}`}
+                  />
+                ))}
               </div>
 
+              {/* Navigation Arrows */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={prev}
+                  aria-label="Previous capability"
+                  className="w-9 h-9 border border-zinc-700 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                >
+                  <ArrowLeft size={16} />
+                </button>
+                <button
+                  onClick={next}
+                  aria-label="Next capability"
+                  className="w-9 h-9 border border-zinc-700 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                >
+                  <ArrowRight size={16} />
+                </button>
+              </div>
             </div>
 
           </div>
+
         </div>
 
       </div>

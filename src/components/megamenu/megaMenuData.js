@@ -111,7 +111,6 @@ export const companyLinks = [
   { name: "About Us",       desc: "Our mission, research & security team", icon: "Info",                   href: "/about-us" },
   { name: "Careers",        desc: "Join our security research team",       icon: "Briefcase",             href: "/careers" },
   { name: "Contact Us",     desc: "Get in touch with our security team",   icon: "Mail",                  href: "/request-a-quote" },
-  { name: "Report an Issue", desc: "Vulnerability & bug disclosures",      icon: "MessageSquareWarning",  href: "/request-a-quote" },
 ];
 
 /* ─── TOP-LEVEL NAV LINKS ─── */
