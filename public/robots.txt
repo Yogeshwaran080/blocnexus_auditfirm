@@ -1,0 +1,9 @@
+# BlocNexus Security Robots.txt
+User-agent: *
+Allow: /
+
+# Disallow administrative/private routes if any
+Disallow: /api/
+
+# XML Sitemap Location
+Sitemap: https://blocnexus-auditfirm.vercel.app/sitemap.xml
