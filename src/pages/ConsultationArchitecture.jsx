@@ -7,6 +7,10 @@ export default function ConsultationArchitecture() {
   return (
     <ProductServiceTemplate
       title="Consultation & Architecture"
+      seoTitle="Web3 Protocol Security Architecture & Advisory | BlocNexus"
+      seoDescription="Expert Web3 security architecture review, UUPS upgradeable proxy safety, timelock governance design, and pre-deployment threat modeling by BlocNexus."
+      seoKeywords="Web3 security advisory, protocol security architecture, smart contract proxy design, UUPS diamond pattern safety, blockchain security consultant"
+      canonical="/consultation-architecture"
       badgeText="⚡ Expert Web3 Security Guidance & Protocol Review"
       scrollItems={["Protocol Architecture", "Proxy Safety", "Multisig Governance", "Tokenomics"]}
       description="Full-stack architectural review validating upgradeable proxy patterns, modular access control hierarchies, and protocol invariant boundaries before writing code."

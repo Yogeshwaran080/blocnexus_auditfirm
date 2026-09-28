@@ -7,6 +7,10 @@ export default function SmartContractAuditing() {
   return (
     <ProductServiceTemplate
       title="Smart Contract Auditing"
+      seoTitle="Institutional Smart Contract Audit Services | BlocNexus"
+      seoDescription="Comprehensive smart contract security audits, line-by-line manual code inspection, formal verification, and economic attack simulation for EVM, Solana, & Move protocols."
+      seoKeywords="smart contract audit, smart contract auditing firm, Web3 protocol security, Solidity audit, formal verification audit, Solana audit"
+      canonical="/smart-contract-auditing"
       badgeText="⚡ Institutional Manual & Formal Smart Contract Verification"
       scrollItems={["Solidity Audits", "Vyper Verification", "Solana Programs", "Move & Cairo"]}
       description="Rigorous line-by-line manual code inspection paired with formal mathematical verification to eliminate critical exploits before protocol mainnet deployment."

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Briefcase, ArrowRight, ShieldCheck, Cpu, Code2, MapPin, Clock, Zap, CheckCircle2 } from "lucide-react";
 import ProductServiceTemplate from "./ProductServiceTemplate";
 import AuditImg from "../assets/audit.png";
+import SEO from "../components/SEO";
 
 export default function Careers() {
   const navigate = useNavigate();
@@ -44,6 +45,12 @@ export default function Careers() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="min-h-screen bg-[#F4F3F1] text-zinc-900 relative overflow-hidden"
     >
+      <SEO
+        title="Careers at BlocNexus | Join Our Web3 Security Research Team"
+        description="Join BlocNexus as a Smart Contract Auditor, Security Researcher, or Penetration Tester. Help protect billions of dollars in Web3 digital assets."
+        keywords="Web3 careers, smart contract auditor jobs, blockchain security jobs, Web3 pentester careers"
+        canonical="/careers"
+      />
       {/* ── BACKGROUND GRID & TEXTURE ── */}
       <div
         className="absolute inset-0 pointer-events-none z-0"

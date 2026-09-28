@@ -14,6 +14,7 @@ import { useLenis } from "lenis/react";
 import { useNavigate } from "react-router-dom";
 import { submitLead } from "./api/leadsApi";
 import { ChainLogo } from "../components/megamenu/ChainLogos";
+import SEO from "../components/SEO";
 
 export default function Contact() {
   const lenis = useLenis();
@@ -304,6 +305,12 @@ export default function Contact() {
       className="relative min-h-screen pt-28 pb-24 px-4 sm:px-6"
       style={{ background: "#ffffff", fontFamily: "'Inter', sans-serif" }}
     >
+      <SEO
+        title="Request a Quote | BlocNexus Smart Contract Audit & Security Consultation"
+        description="Request a confidential smart contract audit or cybersecurity consultation with BlocNexus. Protect your protocol with institutional-grade security analysis."
+        keywords="smart contract audit quote, blockchain security contact, hire smart contract auditor, Web3 pentest request"
+        canonical="/request-a-quote"
+      />
       <div style={{ maxWidth: 640, margin: "0 auto" }}>
 
         {/* Header */}

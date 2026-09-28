@@ -27,6 +27,7 @@ import AuditImg from "../assets/audit.png";
 import AuditLogoImg from "../assets/audit_logo.png";
 import HeroImg from "../assets/hero.png";
 import BlocLogoImg from "../assets/Blocnexus_logo.png";
+import SEO from "../components/SEO";
 
 export default function ProductServiceTemplate({
   title = "Wallet Detection",
@@ -37,6 +38,10 @@ export default function ProductServiceTemplate({
   heroImage = AuditLogoImg,
   pipelineTitle = "How We Secure Wallets & Protocols",
   pipelineDesc = "Our 4-stage automated security pipeline analyzes every transaction payload and dApp connection before execution.",
+  seoTitle,
+  seoDescription,
+  seoKeywords,
+  canonical,
   steps = [
     { num: "01", category: "DETECTION", title: "RPC Connection & Signature Interception", desc: "Monitors dApp connection requests, EIP-712 permit signatures, and RPC method calls.", tagIcon: Activity, tagLabel: "RPC Relay", status: "Active" },
     { num: "02", category: "ANALYSIS", title: "Smart Contract & Bytecode Scanning", desc: "Decompiles target dApp contract bytecode to verify ABI authenticity and flag unverified proxy spenders.", tagIcon: Cpu, tagLabel: "EVM Inspector", status: "Verified" },
@@ -56,6 +61,12 @@ export default function ProductServiceTemplate({
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="min-h-screen bg-[#F4F3F1] text-zinc-900 relative overflow-hidden"
     >
+      <SEO
+        title={seoTitle || `${title} | BlocNexus Security`}
+        description={seoDescription || description}
+        keywords={seoKeywords || `${title}, smart contract security, Web3 audit, blockchain security`}
+        canonical={canonical}
+      />
       {/* ── BACKGROUND GRID & TEXTURE (Custom slight grid per page) ── */}
       <div
         className="absolute inset-0 pointer-events-none z-0"

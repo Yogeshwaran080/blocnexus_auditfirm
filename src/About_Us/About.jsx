@@ -1,8 +1,15 @@
 import React from "react";
+import SEO from "../components/SEO";
 
 export default function About() {
   return (
     <section className="bg-white min-h-screen px-6 py-20">
+      <SEO
+        title="About BlocNexus | Tier-1 Web3 Cybersecurity & Smart Contract Audit Firm"
+        description="Learn about BlocNexus, an elite Web3 cybersecurity firm specializing in smart contract audits, formal verification, protocol penetration testing, and real-time risk analysis."
+        keywords="About BlocNexus, Web3 security firm, blockchain security researchers, smart contract audit team"
+        canonical="/about-us"
+      />
       <div className="max-w-4xl mx-auto">
         <div className="text-center">
           <span className="text-blue-600 font-semibold uppercase tracking-wider">

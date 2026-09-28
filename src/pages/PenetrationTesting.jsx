@@ -7,6 +7,10 @@ export default function PenetrationTesting() {
   return (
     <ProductServiceTemplate
       title="Penetration Testing"
+      seoTitle="Web3 Protocol Penetration Testing | BlocNexus Security"
+      seoDescription="Adversarial black-box and white-box Web3 penetration testing for dApp frontends, cross-chain bridges, RPC nodes, and decentralized infrastructure."
+      seoKeywords="Web3 penetration testing, blockchain pentest, bridge security testing, dApp frontend pentest, RPC node security"
+      canonical="/penetration-testing"
       badgeText="⚡ Real-World Adversarial Web3 Protocol Attacks"
       scrollItems={["Adversarial Attacks", "Cross-Chain Bridges", "RPC Infrastructure", "dApp Frontends"]}
       description="Simulate real-world adversarial attacks across your entire protocol attack surface — smart contracts, cross-chain bridges, dApp frontends, and backend relays."

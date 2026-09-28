@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Home, BookOpen } from "lucide-react";
 import Lottie404 from "../components/Lottie404";
+import SEO from "../components/SEO";
 
 export default function NotFound() {
   return (
@@ -9,6 +10,11 @@ export default function NotFound() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="min-h-screen bg-[#050711] text-white flex flex-col items-center justify-center py-12 px-6 overflow-hidden"
     >
+      <SEO
+        title="404: Page Not Found | BlocNexus Security"
+        description="The requested page could not be found. Return to BlocNexus home or explore our Web3 security blogs."
+        canonical="/404"
+      />
       <div className="max-w-3xl mx-auto w-full text-center flex flex-col items-center">
         {/* Lottie 404 Graphic */}
         <div className="w-full max-w-[520px] -mb-6">

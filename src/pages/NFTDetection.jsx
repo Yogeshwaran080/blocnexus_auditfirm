@@ -7,6 +7,10 @@ export default function NFTDetection() {
   return (
     <ProductServiceTemplate
       title="NFT Detection"
+      seoTitle="NFT Security & Phishing Airdrop Detection | BlocNexus"
+      seoDescription="Scan NFT smart contracts, IPFS metadata URIs, and airdrop campaigns to block fake mint websites, setApprovalForAll drainers, and counterfeit NFTs."
+      seoKeywords="NFT security detection, NFT drainer shield, setApprovalForAll exploit protection, NFT phishing scanner, Web3 NFT audit"
+      canonical="/nft-detection"
       badgeText="⚡ Malicious NFT Airdrop & Campaign Scanning"
       scrollItems={["NFT Airdrops", "Fake Mints", "Drainer Campaigns", "Royalty Shield"]}
       description="Scan NFT contracts and airdrop campaigns to eliminate phishing mint sites, fake token drops, and malicious NFT drainers."

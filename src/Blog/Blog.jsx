@@ -11,6 +11,7 @@ import { getPublishedPosts } from "./api/blogApi";
 import { adaptPost } from "./utils/postAdapters";
 
 import PageLoader from "../components/PageLoader";
+import SEO from "../components/SEO";
 
 export default function Blog() {
   const [search, setSearch] = useState("");
@@ -95,6 +96,12 @@ export default function Blog() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="bg-[#FAFAFA] min-h-screen text-zinc-900 relative"
     >
+      <SEO
+        title="Web3 Security Insights & Smart Contract Audit Research | BlocNexus Blog"
+        description="Explore in-depth Web3 security research, smart contract vulnerability analysis, DeFi exploit breakdowns, and blockchain security best practices by BlocNexus."
+        keywords="Web3 security blog, smart contract audit articles, DeFi exploit analysis, EVM security research, blockchain audit guides"
+        canonical="/blogs"
+      />
       {/* ── SUBTLE TECHNICAL GRID BACKGROUND ── */}
       <div
         className="absolute inset-0 pointer-events-none z-0"

@@ -7,6 +7,10 @@ export default function GasOptimization() {
   return (
     <ProductServiceTemplate
       title="Gas Optimization"
+      seoTitle="Smart Contract Gas Optimization & EVM Profiling | BlocNexus"
+      seoDescription="Reduce EVM smart contract gas fees by up to 40%. Profiling storage slot packing, Yul inline assembly, loop unrolling, and opcode execution."
+      seoKeywords="smart contract gas optimization, EVM gas profiler, Solidity gas efficiency, Yul assembly optimization, storage slot packing"
+      canonical="/gas-optimization"
       badgeText="⚡ Smart Contract Execution & Gas Profiling"
       scrollItems={["Gas Profiling", "Opcode Analysis", "Storage Packing", "Bytecode Tuning"]}
       description="Optimize smart contract execution efficiency, reduce EVM transaction gas fees by up to 40%, and streamline storage layout."

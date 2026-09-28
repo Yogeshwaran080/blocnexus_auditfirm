@@ -7,6 +7,10 @@ export default function WalletDetection() {
   return (
     <ProductServiceTemplate
       title="Wallet Detection"
+      seoTitle="Web3 Wallet Detection & Drainer Shield | BlocNexus Security"
+      seoDescription="Protect Web3 wallet users from malicious dApp connection signatures, EIP-712 approval hijacking, and zero-day wallet drainers in real time."
+      seoKeywords="wallet detection security, Web3 wallet security, wallet drainer shield, signature phishing guard, EVM wallet simulation"
+      canonical="/wallet-detection"
       badgeText="⚡ End-User Wallet & Malicious dApp Protection"
       scrollItems={["Wallet Security", "dApp Scanning", "Drainer Shield", "Phishing Guard"]}
       description="Real-time protection for end-user Web3 wallets. Detect malicious dApp signatures, approval hijacking, and zero-day wallet drainers."

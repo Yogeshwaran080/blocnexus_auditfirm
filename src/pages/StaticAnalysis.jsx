@@ -7,6 +7,10 @@ export default function StaticAnalysis() {
   return (
     <ProductServiceTemplate
       title="Static Analysis & Monitoring"
+      seoTitle="Static Analysis & On-Chain Threat Monitoring | BlocNexus"
+      seoDescription="Automated 24/7 Web3 static analysis, CI/CD security scanning, mempool surveillance, and automated circuit breaker triggers by BlocNexus."
+      seoKeywords="smart contract static analysis, Web3 threat monitoring, on-chain threat detection, CI/CD smart contract scanner, mempool surveillance"
+      canonical="/static-analysis"
       badgeText="⚡ Automated Continuous On-Chain Threat Surveillance"
       scrollItems={["On-Chain Watch", "CI/CD Scans", "Mempool Surveillance", "Circuit Breakers"]}
       description="24/7 automated vulnerability scanning integrated into CI/CD pipelines paired with real-time on-chain monitoring agents watching mempool activity."

@@ -6,6 +6,7 @@ import { getPostBySlug, likePost, getPublishedPosts } from "./api/blogApi";
 import { deriveImage, formatDate, formatReadTime } from "./utils/postAdapters";
 import "./blogArticle.css";
 import PageLoader from "../components/PageLoader";
+import SEO from "../components/SEO";
 
 export default function BlogPost() {
   const { id: slug } = useParams();
@@ -118,6 +119,33 @@ export default function BlogPost() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="bg-[#FAFAFA] min-h-screen text-zinc-900 pt-24 pb-32 relative"
     >
+      <SEO
+        title={`${post.title} | BlocNexus Security Research`}
+        description={post.excerpt || `Read ${post.title} on BlocNexus Security Blog.`}
+        keywords={`${post.category || 'Web3 Security'}, smart contract audit, blockchain security, ${post.title}`}
+        canonical={`/blog/${slug}`}
+        ogType="article"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "description": post.excerpt || post.title,
+          "author": {
+            "@type": "Organization",
+            "name": post.author || "BlocNexus Security Research"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "BlocNexus Security",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://blocnexus-auditfirm.vercel.app/favicon.png"
+            }
+          },
+          "datePublished": post.createdAt,
+          "mainEntityOfPage": `https://blocnexus-auditfirm.vercel.app/blog/${slug}`
+        }}
+      />
       {/* ── SUBTLE GRID BACKGROUND ── */}
       <div
         className="absolute inset-0 pointer-events-none z-0"

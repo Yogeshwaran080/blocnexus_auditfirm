@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import TransactionImg from "../assets/Transaction.png";
+import SEO from "../components/SEO";
 
 export default function TransactionProduct() {
   const navigate = useNavigate();
@@ -23,6 +24,12 @@ export default function TransactionProduct() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="min-h-screen bg-[#F4F3F1] text-zinc-900 relative overflow-hidden"
     >
+      <SEO
+        title="Real-Time Transaction Threat Prevention | BlocNexus Security"
+        description="Prevent malicious transactions, sandwich attacks, and front-running in real time before block inclusion. Protect user funds with BlocNexus real-time threat firewall."
+        keywords="real-time transaction security, mempool threat prevention, front-running protection, Web3 transaction firewall, flashbot attack defense"
+        canonical="/transaction"
+      />
       {/* ── BACKGROUND GRID & TEXTURE (Matches Transaction.png ivory texture) ── */}
       <div
         className="absolute inset-0 pointer-events-none z-0"

@@ -7,6 +7,10 @@ export default function FindFlaws() {
   return (
     <ProductServiceTemplate
       title="Find Flaws in Contract"
+      seoTitle="Automated Smart Contract Vulnerability Scanner | BlocNexus"
+      seoDescription="Discover smart contract flaws, reentrancy bugs, access control exploits, and oracle manipulation risks using BlocNexus automated vulnerability scanner."
+      seoKeywords="smart contract vulnerability scanner, find smart contract flaws, automated EVM fuzzing, reentrancy scanner, AST static analysis"
+      canonical="/find-flaws"
       badgeText="⚡ Automated Vulnerability & Exploit Scanning"
       scrollItems={["Logic Flaws", "Reentrancy Bugs", "Access Control", "Oracle Vulnerabilities"]}
       description="Automated static analysis, symbolic execution, and vulnerability scanning engine designed to discover critical smart contract flaws before mainnet deployment."
