@@ -21,7 +21,7 @@ import {
   Activity
 } from "lucide-react";
 
-import Logo from "../assets/blocnexus_logo.png";
+import Logo from "../assets/Blocnexus_logo.png";
 import MobileMenu from "./MobileMenu";
 import { navLinks, productsColumn, servicesColumn, companyLinks } from "./megamenu";
 
@@ -120,10 +120,9 @@ export default function Navbar() {
         className={`
           fixed top-0 left-0 right-0 z-50 select-none
           transition-colors duration-300 ease-in-out
-          ${
-            showWhiteBg
-              ? "bg-white/95 backdrop-blur-xl border-b border-zinc-200/90 shadow-xs"
-              : "bg-transparent border-b border-transparent"
+          ${showWhiteBg
+            ? "bg-white/95 backdrop-blur-xl border-b border-zinc-200/90 shadow-xs"
+            : "bg-transparent border-b border-transparent"
           }
         `}
       >
@@ -214,9 +213,8 @@ export default function Navbar() {
                       {(item.hasProductsDropdown || item.hasServicesDropdown || item.hasCompanyDropdown) && (
                         <ChevronDown
                           size={13}
-                          className={`transition-transform duration-200 opacity-70 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
+                          className={`transition-transform duration-200 opacity-70 ${isOpen ? "rotate-180" : ""
+                            }`}
                         />
                       )}
                     </button>
