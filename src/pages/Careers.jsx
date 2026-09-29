@@ -113,11 +113,11 @@ export default function Careers() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between">
-                <span className="text-xs font-mono text-emerald-600 flex items-center gap-1">
+                {/* <span className="text-xs font-mono text-emerald-600 flex items-center gap-1">
                   <CheckCircle2 size={14} /> Accepting Applications
-                </span>
+                </span> */}
                 <button
-                  onClick={() => navigate("/request-a-quote")}
+                  onClick={() => navigate("/apply")}
                   className="px-4 py-2 bg-black text-white hover:bg-zinc-800 rounded-lg text-xs font-light transition cursor-pointer flex items-center gap-1"
                 >
                   Apply Now <ArrowRight size={13} />

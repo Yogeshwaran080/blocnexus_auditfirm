@@ -11,6 +11,7 @@ import PageLoader from "./components/PageLoader";
 const Contact = lazy(() => import("./contact_components/Contact"));
 const About = lazy(() => import("./About_Us/About"));
 const Careers = lazy(() => import("./pages/Careers"));
+const JobApplication = lazy(() => import("./pages/JobApplication"));
 const Blog = lazy(() => import("./Blog/Blog"));
 const BlogPost = lazy(() => import("./Blog/BlogPost"));
 const TransactionProduct = lazy(() => import("./pages/TransactionProduct"));
@@ -45,6 +46,7 @@ function AppContent() {
           <Route path="/request-a-quote" element={<Contact />} />
           <Route path="/about-us" element={<About />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/apply" element={<JobApplication />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           

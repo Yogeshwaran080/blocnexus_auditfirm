@@ -193,7 +193,7 @@ export default function Hero() {
         <div className="w-full max-w-full md:max-w-4xl">
 
           {/* HEADLINE WITH VERTICAL TEXT SCROLL */}
-          <h1 className="text-black font-light tracking-tight leading-[1.08] text-[38px] sm:text-6xl lg:text-7xl flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3">
+          <h1 className="text-black font-light tracking-tight leading-[1.05] text-[44px] xs:text-[50px] sm:text-6xl lg:text-7xl flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3">
             <span>Secure</span>
             <VerticalTextScroll
               items={[
