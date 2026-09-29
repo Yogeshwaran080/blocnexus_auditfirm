@@ -157,19 +157,19 @@ export default function Footer() {
 
         <div className="flex items-center gap-6 text-xs font-light">
           <button
-            onClick={() => handleLinkClick("/about-us")}
+            onClick={() => handleLinkClick("/security-policy")}
             className="text-zinc-600 hover:text-black transition cursor-pointer"
           >
             Security Policy
           </button>
           <button
-            onClick={() => handleLinkClick("/about-us")}
+            onClick={() => handleLinkClick("/privacy-policy")}
             className="text-zinc-600 hover:text-black transition cursor-pointer"
           >
             Privacy Policy
           </button>
           <button
-            onClick={() => handleLinkClick("/about-us")}
+            onClick={() => handleLinkClick("/terms-of-service")}
             className="text-zinc-600 hover:text-black transition cursor-pointer"
           >
             Terms of Service

@@ -74,6 +74,26 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Legal & Policies -->
+  <url>
+    <loc>https://www.blocnexus.com/security-policy</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.blocnexus.com/privacy-policy</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.blocnexus.com/terms-of-service</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Company & Careers -->
   <url>
     <loc>https://www.blocnexus.com/about-us</loc>

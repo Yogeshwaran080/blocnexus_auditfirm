@@ -22,6 +22,9 @@ const SmartContractAuditing = lazy(() => import("./pages/SmartContractAuditing")
 const PenetrationTesting = lazy(() => import("./pages/PenetrationTesting"));
 const ConsultationArchitecture = lazy(() => import("./pages/ConsultationArchitecture"));
 const StaticAnalysis = lazy(() => import("./pages/StaticAnalysis"));
+const SecurityPolicy = lazy(() => import("./pages/SecurityPolicy"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function AppContent() {
@@ -58,6 +61,11 @@ function AppContent() {
           <Route path="/penetration-testing" element={<PenetrationTesting />} />
           <Route path="/consultation-architecture" element={<ConsultationArchitecture />} />
           <Route path="/static-analysis" element={<StaticAnalysis />} />
+
+          {/* Legal & Policy Routes */}
+          <Route path="/security-policy" element={<SecurityPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
 
           {/* 404 Routes */}
           <Route path="/404" element={<NotFound />} />
