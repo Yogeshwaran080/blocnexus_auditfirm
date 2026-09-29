@@ -189,20 +189,11 @@ export default function Hero() {
       {/* ── ANIMATED DARK BLACK GLOWING LINES ALONG GRID LINES ── */}
       <GridGlowingLinesAnimation />
 
-      <div className="relative z-10 lg:-mt-3 max-w-7xl mx-auto px-6 md:px-12 flex items-center min-h-[75vh]">
-        <div className="max-w-4xl w-full">
-
-          {/* YELLOW ACCENT TOP BADGE */}
-          {/* <div className="mb-5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-200/50 text-amber-950 border border-amber-300/70 text-xs font-semibold tracking-wide shadow-xs">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-600"></span>
-            </span>
-            ⚡ Institutional Web3 Smart Contract Audits & Protocol Security
-          </div> */}
+      <div className="relative z-10 lg:-mt-3 max-w-7xl mx-auto px-5 sm:px-6 md:px-12 flex items-center min-h-[75vh]">
+        <div className="w-full max-w-full md:max-w-4xl">
 
           {/* HEADLINE WITH VERTICAL TEXT SCROLL */}
-          <h1 className="text-black font-light tracking-tight leading-[1.08] text-[36px] sm:text-6xl lg:text-7xl flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3">
+          <h1 className="text-black font-light tracking-tight leading-[1.08] text-[38px] sm:text-6xl lg:text-7xl flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3">
             <span>Secure</span>
             <VerticalTextScroll
               items={[

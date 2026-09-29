@@ -62,7 +62,7 @@ export default function Careers() {
       />
 
       {/* ── HERO HEADER SECTION ── */}
-      <section className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto mb-16">
+      {/* <section className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto mb-16">
         <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-300/80 text-xs font-mono uppercase tracking-wider text-zinc-800 shadow-xs mb-6">
             <Briefcase size={14} className="text-black" /> Security Research Division
@@ -76,7 +76,7 @@ export default function Careers() {
             We are looking for world-class security researchers, smart contract auditors, and offensive security engineers to protect billion-dollar decentralized protocols.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* ── OPEN POSITIONS GRID ── */}
       <section id="open-positions" className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto">

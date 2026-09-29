@@ -42,12 +42,12 @@ export default function About() {
       {/* ── 1. INSTITUTIONAL MANDATE: REAL BANK BUILDING IMAGE (NO HERO BANNER) ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Narrative Column (Strictly Black & White) */}
           <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
+            {/* <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
               01 // Institutional Security Mandate
-            </span>
+            </span> */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light text-black tracking-tight leading-[1.1]">
               Bridging Sovereign Banking Rigor with Decentralized Technology.
             </h1>
@@ -78,7 +78,7 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8">
                 <span className="text-xs font-mono uppercase tracking-widest text-zinc-300">
-                  New York Financial District // Security Operations Base
+                  New York Financial District,Security Operations Base
                 </span>
                 <p className="text-sm font-light text-white mt-1">
                   Engineered to meet Wall Street institutional risk controls and sovereign digital asset standards.
@@ -93,7 +93,7 @@ export default function About() {
       {/* ── 2. THREAT INTELLIGENCE & REAL CONTROL CENTER IMAGE ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Real Control Center Image */}
           <div className="lg:col-span-6 order-2 lg:order-1 relative">
             <div className="relative rounded-3xl overflow-hidden border border-zinc-300 shadow-2xl bg-zinc-900">
@@ -115,9 +115,9 @@ export default function About() {
 
           {/* Right Narrative Column (Black & White) */}
           <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
+            {/* <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
               02 // Threat Intelligence Engine
-            </span>
+            </span> */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-black tracking-tight">
               Proactive Protection Before Transactions Touch the Blockchain.
             </h2>
@@ -128,7 +128,7 @@ export default function About() {
               Our automated threat engine surfaces EIP-712 signature hijacking, setApprovalForAll drainers, front-running sandwich bots, and malicious dApp redirects before end users or protocol contracts sign execution payloads.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
+            {/* <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="bg-white p-4 rounded-xl border border-zinc-300">
                 <span className="text-xs font-mono text-zinc-500 block">SIMULATION SPEED</span>
                 <span className="text-base font-mono font-medium text-black">&lt; 10 Milliseconds</span>
@@ -137,14 +137,14 @@ export default function About() {
                 <span className="text-xs font-mono text-zinc-500 block">COVERAGE</span>
                 <span className="text-base font-mono font-medium text-black">EVM + Solana + Layer 2s</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
         </div>
       </section>
 
       {/* ── 3. OPERATIONAL PRINCIPLES (SECTION 03) ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-24">
+      {/* <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-24">
         <div className="mb-12">
           <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
             03 // Operational Principles
@@ -198,7 +198,7 @@ export default function About() {
             );
           })}
         </div>
-      </section>
+      </section> */}
 
       {/* ── 4. FINAL CTA BANNER (DIRECTLY AFTER OPERATIONAL PRINCIPLES - NO OTHER SECTIONS) ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
