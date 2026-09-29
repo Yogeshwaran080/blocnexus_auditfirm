@@ -160,7 +160,7 @@ function GridGlowingLinesAnimation() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute left-[70%] right-0 top-0 bottom-0 h-full pointer-events-none z-5 opacity-90"
+      className="hidden md:block absolute left-[70%] right-0 top-0 bottom-0 h-full pointer-events-none z-5 opacity-90"
     />
   );
 }
@@ -202,7 +202,7 @@ export default function Hero() {
           </div> */}
 
           {/* HEADLINE WITH VERTICAL TEXT SCROLL */}
-          <h1 className="text-black font-light tracking-tight leading-[1.08] text-4xl sm:text-6xl lg:text-7xl flex flex-wrap items-baseline gap-x-3">
+          <h1 className="text-black font-light tracking-tight leading-[1.08] text-[36px] sm:text-6xl lg:text-7xl flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3">
             <span>Secure</span>
             <VerticalTextScroll
               items={[
