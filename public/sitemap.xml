@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/</loc>
+    <loc>https://www.blocnexus.com/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -10,7 +10,7 @@
 
   <!-- Request a Quote / Contact -->
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/request-a-quote</loc>
+    <loc>https://www.blocnexus.com/request-a-quote</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -18,25 +18,25 @@
 
   <!-- Core Services -->
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/smart-contract-auditing</loc>
+    <loc>https://www.blocnexus.com/smart-contract-auditing</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/penetration-testing</loc>
+    <loc>https://www.blocnexus.com/penetration-testing</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/consultation-architecture</loc>
+    <loc>https://www.blocnexus.com/consultation-architecture</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/static-analysis</loc>
+    <loc>https://www.blocnexus.com/static-analysis</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -44,31 +44,31 @@
 
   <!-- Products & Security Tools -->
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/transaction</loc>
+    <loc>https://www.blocnexus.com/transaction</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/wallet-detection</loc>
+    <loc>https://www.blocnexus.com/wallet-detection</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/nft-detection</loc>
+    <loc>https://www.blocnexus.com/nft-detection</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/gas-optimization</loc>
+    <loc>https://www.blocnexus.com/gas-optimization</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/find-flaws</loc>
+    <loc>https://www.blocnexus.com/find-flaws</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -76,13 +76,13 @@
 
   <!-- Company & Careers -->
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/about-us</loc>
+    <loc>https://www.blocnexus.com/about-us</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/careers</loc>
+    <loc>https://www.blocnexus.com/careers</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -90,7 +90,7 @@
 
   <!-- Security Research & Blogs -->
   <url>
-    <loc>https://blocnexus-auditfirm.vercel.app/blogs</loc>
+    <loc>https://www.blocnexus.com/blogs</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>

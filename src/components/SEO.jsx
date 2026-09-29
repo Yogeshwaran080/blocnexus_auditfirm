@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 const DEFAULT_TITLE = "BlocNexus | Institutional Web3 Smart Contract Audits & Protocol Security";
 const DEFAULT_DESC = "BlocNexus provides tier-1 Web3 smart contract auditing, protocol penetration testing, formal verification, and real-time transaction threat prevention for blockchain systems.";
 const DEFAULT_KEYWORDS = "smart contract audit, Web3 security, protocol audit, blockchain security, EVM audit, Solana security, formal verification, transaction fraud prevention";
-const SITE_URL = "https://blocnexus-auditfirm.vercel.app";
+const SITE_URL = "https://www.blocnexus.com";
 const DEFAULT_IMAGE = `${SITE_URL}/favicon.png`;
 
 export default function SEO({

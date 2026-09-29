@@ -139,11 +139,11 @@ export default function BlogPost() {
             "name": "BlocNexus Security",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://blocnexus-auditfirm.vercel.app/favicon.png"
+              "url": "https://www.blocnexus.com/favicon.png"
             }
           },
           "datePublished": post.createdAt,
-          "mainEntityOfPage": `https://blocnexus-auditfirm.vercel.app/blog/${slug}`
+          "mainEntityOfPage": `https://www.blocnexus.com/blog/${slug}`
         }}
       />
       {/* ── SUBTLE GRID BACKGROUND ── */}
