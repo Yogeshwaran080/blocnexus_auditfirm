@@ -3,24 +3,21 @@ import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import {
   ShieldCheck,
-  Lock,
-  Cpu,
-  Activity,
-  ArrowRight,
   Building2,
   Globe,
-  Terminal,
+  ArrowRight,
+  Cpu,
+  Activity,
+  Lock,
   Zap,
   CheckCircle2,
-  FileCode2,
-  Layers,
-  Search
+  ShieldAlert,
+  Search,
+  Layers
 } from "lucide-react";
 
-import AuditImg from "../assets/audit.png";
-import TransactionImg from "../assets/Transaction.png";
-import AuditLogoImg from "../assets/audit_logo.png";
-import HeroImg from "../assets/hero.png";
+import FinancialBuildingImg from "../assets/financial_building.jpg";
+import SecurityCenterImg from "../assets/security_center.jpg";
 
 export default function About() {
   return (
@@ -29,13 +26,13 @@ export default function About() {
       className="min-h-screen bg-[#F4F3F1] text-zinc-900 pt-28 md:pt-36 pb-24 relative overflow-hidden"
     >
       <SEO
-        title="About BlocNexus | Tier-1 Web3 Cybersecurity & Smart Contract Audit Firm"
-        description="BlocNexus is an elite Web3 cybersecurity firm protecting global financial institutions, protocol treasuries, and decentralized finance markets with formal verification and real-time threat prevention."
-        keywords="About BlocNexus, Web3 security firm, institutional blockchain security, smart contract audit team, financial technology security"
+        title="About BlocNexus | Web3 Security Layer for Global Financial Institutions"
+        description="BlocNexus provides the security layer for Web3 and financial institutions, safeguarding smart contracts, digital asset treasuries, and decentralized protocols with real-time threat prevention."
+        keywords="About BlocNexus, Blockaid alternative, Web3 security firm, institutional smart contract audit, blockchain financial security"
         canonical="/about-us"
       />
 
-      {/* ── BACKGROUND GRID & TEXTURE (Matches Hero Section) ── */}
+      {/* ── BACKGROUND GRID OVERLAY (Blockaid Clean Aesthetic) ── */}
       <div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
@@ -47,193 +44,216 @@ export default function About() {
         }}
       />
 
-      {/* ── HERO SECTION: INSTITUTIONAL MANDATE ── */}
+      {/* ── 1. HERO SECTION: THE SECURITY LAYER FOR WEB3 & FINANCE ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28">
         <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-300/80 text-xs font-mono uppercase tracking-wider text-zinc-800 shadow-xs mb-6">
-            <Building2 size={14} className="text-black" /> Institutional Mandate & Security Vision
+            <Building2 size={14} className="text-black" /> About BlocNexus Security
           </div>
 
           <h1 className="text-black font-light tracking-tight leading-[1.08] text-3xl sm:text-5xl lg:text-6xl">
-            Architected to Protect <span className="font-normal text-blue-600">Financial Institutions</span> & Decentralized Capital Markets.
+            Building the Security Layer for <span className="font-normal text-blue-600">Web3</span> & Global Financial Ecosystems.
           </h1>
 
           <p className="mt-6 text-zinc-700 text-base sm:text-xl font-light leading-relaxed max-w-3xl">
-            BlocNexus was established on a singular institutional mandate: to engineer bulletproof security frameworks for financial entities, digital asset treasuries, protocol architects, and decentralized liquidity networks worldwide.
+            BlocNexus protects protocol developers, Web3 wallets, and financial institutions from malicious transactions, smart contract exploits, and zero-day threat campaigns before execution.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               to="/request-a-quote"
-              className="px-8 py-4 rounded-xl bg-black hover:bg-zinc-800 text-white font-medium text-sm transition-all duration-200 shadow-md flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-xl bg-black hover:bg-zinc-800 text-white font-medium text-sm transition shadow-md flex items-center gap-2"
             >
               Request an Audit Scope <ArrowRight size={16} />
             </Link>
 
             <Link
               to="/smart-contract-auditing"
-              className="px-8 py-4 rounded-xl bg-white border border-zinc-300 hover:border-black text-zinc-900 font-medium text-sm transition-all duration-200 shadow-xs flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-xl bg-white border border-zinc-300 hover:border-black text-zinc-900 font-medium text-sm transition shadow-xs flex items-center gap-2"
             >
-              Explore Audit Methodology
+              Explore Security Suite
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── VISUAL INSTITUTIONAL REFERENCE SECTION (NEW YORK / WALL STREET SECURITY LAB AESTHETIC) ── */}
+      {/* ── 2. METRICS BAR (BLOCKAID STYLE STATS) ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-zinc-300 shadow-lg">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-zinc-200">
+            <div className="p-2">
+              <h3 className="text-3xl sm:text-5xl font-light text-black tracking-tight font-mono">$1.8B+</h3>
+              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Digital Assets Protected</p>
+            </div>
+            <div className="p-2 pt-6 lg:pt-2">
+              <h3 className="text-3xl sm:text-5xl font-light text-black tracking-tight font-mono">100M+</h3>
+              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Transactions Scanned</p>
+            </div>
+            <div className="p-2 pt-6 lg:pt-2">
+              <h3 className="text-3xl sm:text-5xl font-light text-black tracking-tight font-mono">&lt; 10ms</h3>
+              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Mempool Threat Response</p>
+            </div>
+            <div className="p-2 pt-6 lg:pt-2">
+              <h3 className="text-3xl sm:text-5xl font-light text-black tracking-tight font-mono">0</h3>
+              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Critical Post-Audit Exploits</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. OUR MANDATE & ORIGIN: FEDERAL RESERVE & WALL STREET INSTITUTION IMAGE ── */}
+      <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Main Visual Container */}
-          <div className="lg:col-span-7 relative bg-white rounded-3xl p-4 md:p-6 border border-zinc-300 shadow-xl overflow-hidden group">
-            <div className="relative rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-900">
-              <img
-                src={AuditImg}
-                alt="BlocNexus Financial Security Operations Lab"
-                className="w-full h-[320px] sm:h-[420px] object-cover filter contrast-110 brightness-95 transition-transform duration-700 group-hover:scale-102"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-8">
-                <span className="text-xs font-mono uppercase tracking-widest text-zinc-300">
-                  Global Headquarters & Security Research Lab
-                </span>
-                <h3 className="text-xl sm:text-2xl font-light text-white mt-1">
-                  Wall Street & Institutional Digital Asset Safeguards
-                </h3>
-              </div>
-            </div>
-
-            {/* Overlaid Float Metric Card */}
-            <div className="hidden sm:flex absolute bottom-8 right-8 bg-black/90 text-white p-5 rounded-2xl border border-zinc-800 backdrop-blur-md shadow-2xl items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-600/30 text-blue-400 flex items-center justify-center font-mono font-bold text-sm">
-                SLA
-              </div>
-              <div>
-                <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider">Zero-Day Defense</p>
-                <p className="text-sm font-light text-white mt-0.5">&lt; 10ms Real-Time Mempool Interception</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Secondary Visual Info Grid */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white p-8 rounded-3xl border border-zinc-300 shadow-md">
-              <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center mb-5">
-                <Globe size={20} />
-              </div>
-              <h3 className="text-xl font-semibold text-black tracking-tight mb-2">
-                Securing Sovereign & Enterprise Capital
-              </h3>
-              <p className="text-zinc-600 text-sm font-light leading-relaxed">
-                As traditional financial entities deploy on-chain liquidity, smart contract security is no longer an optional code review — it is the cornerstone of global financial stability.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-3xl border border-zinc-300 shadow-md">
-              <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center mb-5">
-                <ShieldCheck size={20} />
-              </div>
-              <h3 className="text-xl font-semibold text-black tracking-tight mb-2">
-                Defense-in-Depth Engineering
-              </h3>
-              <p className="text-zinc-600 text-sm font-light leading-relaxed">
-                We combine line-by-line manual code audits, formal mathematical invariant proofs, and automated mempool threat detection to ensure capital remains immune to adversary attacks.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── OUR VISION & PHILOSOPHY: DEEP READABLE CONTENT ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-28">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-zinc-300 shadow-lg">
-          <div className="max-w-3xl">
+          {/* Left Narrative Column */}
+          <div className="lg:col-span-6 space-y-6">
             <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
-              01 // Core Philosophy
+              01 // Institutional Mandate
             </span>
-            <h2 className="text-2xl sm:text-4xl font-light text-black tracking-tight mt-2 mb-8">
-              Why Institutional Protocol Security Demands Rigor Beyond Checklist Audits.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-black tracking-tight">
+              Bridging Sovereign Banking Rigor with Decentralized Technology.
             </h2>
-          </div>
+            <p className="text-zinc-700 text-base font-light leading-relaxed">
+              As sovereign wealth funds, tier-1 financial institutions, and global clearing banks transition asset settlement onto public and private blockchains, conventional IT security models fall short. In Web3, transactions are irreversible — a single logical vulnerability can drain liquid capital in seconds.
+            </p>
+            <p className="text-zinc-700 text-base font-light leading-relaxed">
+              BlocNexus was constructed to give financial entities and decentralized protocol architects defense-grade confidence. We combine line-by-line manual audit precision, formal mathematical invariant proofs, and real-time transaction firewalls to secure capital at scale.
+            </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-14 text-zinc-700 text-base font-light leading-relaxed">
-            <div className="space-y-6">
-              <p>
-                In decentralized finance and Web3 protocol architecture, code is law — but immutable code also means immutable risk. A single logical flaw, un-cached state update, or reentrancy primitive can result in catastrophic capital loss within a single block confirmation.
-              </p>
-              <p>
-                BlocNexus was founded by senior security researchers, cryptography specialists, and EVM offensive security engineers who recognized that automated linters and surface-level audits are inadequate for institutional deployments.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              <p>
-                Our security methodology treats every smart contract ecosystem as a mission-critical financial clearing house. We evaluate non-obvious game-theoretic exploits, flash-loan manipulation vectors, cross-chain bridge state forgery, and oracle latency delays before mainnet deployment.
-              </p>
-              <p>
-                By bridging traditional Wall Street quantitative risk governance with state-of-the-art Web3 offensive security research, BlocNexus provides protocols with unyielding architectural confidence.
-              </p>
+            <div className="pt-2 flex items-center gap-6">
+              <div className="flex items-center gap-2 text-sm font-medium text-black">
+                <CheckCircle2 size={18} className="text-emerald-600" /> Federal Reserve Security Standards
+              </div>
+              <div className="flex items-center gap-2 text-sm font-medium text-black">
+                <CheckCircle2 size={18} className="text-emerald-600" /> Zero-Trust Architecture
+              </div>
             </div>
           </div>
+
+          {/* Right Natural Federal Reserve / Financial District Building Image */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative rounded-3xl overflow-hidden border border-zinc-300 shadow-2xl group bg-zinc-900">
+              <img
+                src={FinancialBuildingImg}
+                alt="Federal Reserve and Wall Street Institutional Building Security Architecture"
+                className="w-full h-[380px] sm:h-[480px] object-cover filter contrast-105 brightness-95 transition-transform duration-700 group-hover:scale-102"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                <span className="text-xs font-mono uppercase tracking-widest text-zinc-300">
+                  New York Financial District // Security Operations Base
+                </span>
+                <p className="text-sm font-light text-white mt-1">
+                  Engineered to meet Wall Street institutional risk controls and sovereign digital asset standards.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* ── THE 4 PILLARS OF OUR SECURITY ARCHITECTURE ── */}
+      {/* ── 4. REAL-TIME THREAT INTELLIGENCE & COMMAND CENTER IMAGE ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-28">
-        <div className="mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Command Center Image */}
+          <div className="lg:col-span-6 order-2 lg:order-1 relative">
+            <div className="relative rounded-3xl overflow-hidden border border-zinc-300 shadow-2xl group bg-zinc-900">
+              <img
+                src={SecurityCenterImg}
+                alt="BlocNexus Real-Time Threat Intelligence & Security Control Center"
+                className="w-full h-[380px] sm:h-[480px] object-cover filter contrast-105 brightness-95 transition-transform duration-700 group-hover:scale-102"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                <span className="text-xs font-mono uppercase tracking-widest text-zinc-300">
+                  Sub-Millisecond Mempool Telemetry & Threat Surveillance
+                </span>
+                <p className="text-sm font-light text-white mt-1">
+                  Real-time transaction simulation engines inspecting bytecode signatures before block inclusion.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Intelligence Narrative Column */}
+          <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
+            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
+              02 // Threat Intelligence Engine
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-black tracking-tight">
+              Proactive Protection Before Transactions Touch the Blockchain.
+            </h2>
+            <p className="text-zinc-700 text-base font-light leading-relaxed">
+              Reactive security is obsolete. By the time an exploit is confirmed on-chain, millions in liquidity are lost. BlocNexus operates a continuous mempool surveillance engine that simulates incoming call payloads against live state forks in real time.
+            </p>
+            <p className="text-zinc-700 text-base font-light leading-relaxed">
+              Our automated threat engine surfaces EIP-712 signature hijacking, setApprovalForAll drainers, front-running sandwich bots, and malicious dApp redirects before end users or protocol contracts sign execution payloads.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="bg-white p-4 rounded-xl border border-zinc-300">
+                <span className="text-xs font-mono text-zinc-500 block">SIMULATION SPEED</span>
+                <span className="text-lg font-mono font-medium text-black">&lt; 10 Milliseconds</span>
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-zinc-300">
+                <span className="text-xs font-mono text-zinc-500 block">COVERAGE</span>
+                <span className="text-lg font-mono font-medium text-black">EVM + Solana + Layer 2s</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── 5. CORE OPERATIONAL VALUES (BLOCKAID FOUR CARDS) ── */}
+      <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-28">
+        <div className="mb-12">
           <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
-            02 // Security Architecture
+            03 // Operational Principles
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-black tracking-tight mt-2">
-            Our Four Pillars of Protocol Defense
+          <h2 className="text-3xl sm:text-4xl font-light text-black tracking-tight mt-2">
+            Built on Uncompromising Principles
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
-              num: "01",
-              title: "Mathematical Formal Verification",
-              desc: "Proving state machine invariants mathematically using formal specification tools to eliminate logic loopholes.",
-              icon: Cpu
-            },
-            {
-              num: "02",
-              title: "Offensive Penetration & Chaos",
-              desc: "Simulating black-box adversarial attacks against RPC nodes, bridge relays, and dApp frontends.",
+              title: "Zero False Positives",
+              desc: "Deep bytecode analysis and symbolic solvers ensure high-fidelity threat detection without blocking legitimate protocol activity.",
               icon: ShieldCheck
             },
             {
-              num: "03",
-              title: "Real-Time Transaction Defense",
-              desc: "Sub-millisecond mempool monitoring firewall blocking sandwich attacks, front-running, and malicious calls.",
-              icon: Activity
+              title: "Sub-Millisecond Velocity",
+              desc: "Lightning-fast RPC relays and simulation node clusters designed for high-frequency trading and DeFi protocols.",
+              icon: Zap
             },
             {
-              num: "04",
-              title: "Institutional Proxy Governance",
-              desc: "Verifying UUPS proxy patterns, Diamond storage safety, and multi-sig emergency timelocks.",
+              title: "Proactive Vulnerability Scans",
+              desc: "Surfacing logic flaws, reentrancy vectors, and proxy storage collisions prior to mainnet deployment.",
+              icon: Search
+            },
+            {
+              title: "Institutional Transparency",
+              desc: "Clear CVSS risk scoring, line-by-line patch guidance, and reproducible proof-of-concept test suites.",
               icon: Lock
             }
-          ].map((pillar, idx) => {
-            const IconComponent = pillar.icon;
+          ].map((val, idx) => {
+            const IconComp = val.icon;
             return (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-2xl border border-zinc-300 shadow-md flex flex-col justify-between hover:border-black transition-all duration-200"
+                className="bg-white p-8 rounded-2xl border border-zinc-300 shadow-md flex flex-col justify-between hover:border-black transition duration-200"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-zinc-400 font-bold">{pillar.num}</span>
-                    <div className="w-9 h-9 rounded-xl bg-black text-white flex items-center justify-center">
-                      <IconComponent size={18} />
-                    </div>
+                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center mb-6">
+                    <IconComp size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-black tracking-tight mb-3">
-                    {pillar.title}
+                  <h3 className="text-lg font-semibold text-black tracking-tight mb-2">
+                    {val.title}
                   </h3>
                   <p className="text-zinc-600 text-xs sm:text-sm font-light leading-relaxed">
-                    {pillar.desc}
+                    {val.desc}
                   </p>
                 </div>
               </div>
@@ -242,29 +262,29 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── PRODUCTS & SECURITY SERVICES ROUTING MATRIX ── */}
+      {/* ── 6. PRODUCTS & SERVICES SUITE ROUTING GRID ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-28">
         <div className="bg-black text-white rounded-3xl p-8 sm:p-12 border border-zinc-800 shadow-2xl">
-          <div className="max-w-3xl mb-12">
+          <div className="max-w-3xl mb-10">
             <span className="text-xs font-mono uppercase tracking-widest text-zinc-400">
-              03 // Product & Service Suite
+              04 // Complete Security Ecosystem
             </span>
             <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight mt-2">
-              Integrated Security Infrastructure for Web3 Systems
+              Explore BlocNexus Products & Auditing Services
             </h2>
             <p className="mt-3 text-zinc-400 text-sm font-light leading-relaxed">
-              Explore our specialized security products and auditing services built for financial protocols.
+              Modular security solutions built for protocol developers, liquidity pools, and institutional digital asset managers.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: "Smart Contract Auditing", desc: "Line-by-line manual reviews & formal verification proofs.", path: "/smart-contract-auditing" },
-              { title: "Transaction Threat Prevention", desc: "Real-time mempool protection firewall against MEV & drainers.", path: "/transaction" },
-              { title: "Wallet & dApp Detection", desc: "Protection against signature hijacking & zero-day drainers.", path: "/wallet-detection" },
-              { title: "Gas Optimization Profiling", desc: "Reduce EVM gas consumption by up to 40% with storage packing.", path: "/gas-optimization" },
-              { title: "Find Flaws in Contract", desc: "Automated vulnerability & invariant fuzzing scanner.", path: "/find-flaws" },
-              { title: "Penetration Testing", desc: "Adversarial attack simulations against bridges & RPC relays.", path: "/penetration-testing" },
+              { title: "Smart Contract Auditing", desc: "Manual code reviews & formal verification proofs.", path: "/smart-contract-auditing" },
+              { title: "Transaction Threat Prevention", desc: "Real-time mempool protection firewall.", path: "/transaction" },
+              { title: "Wallet & dApp Detection", desc: "Signature drainer shield & phishing protection.", path: "/wallet-detection" },
+              { title: "NFT Security Scanner", desc: "Malicious airdrop & setApprovalForAll protection.", path: "/nft-detection" },
+              { title: "Gas Optimization Profiler", desc: "Reduce contract gas fees by up to 40%.", path: "/gas-optimization" },
+              { title: "Find Flaws in Contract", desc: "Automated vulnerability & invariant fuzzing.", path: "/find-flaws" },
             ].map((prod, idx) => (
               <Link
                 key={idx}
@@ -286,39 +306,15 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── QUANTITATIVE IMPACT METRICS ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mb-24">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-zinc-300 shadow-lg">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-zinc-200">
-            <div className="p-4">
-              <h3 className="text-4xl sm:text-5xl font-light text-black tracking-tight font-mono">$1.8B+</h3>
-              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Digital Asset TVL Secured</p>
-            </div>
-            <div className="p-4 pt-8 lg:pt-4">
-              <h3 className="text-4xl sm:text-5xl font-light text-black tracking-tight font-mono">0</h3>
-              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Critical Exploits Post-Audit</p>
-            </div>
-            <div className="p-4 pt-8 lg:pt-4">
-              <h3 className="text-4xl sm:text-5xl font-light text-black tracking-tight font-mono">&lt;10ms</h3>
-              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Mempool Threat Response</p>
-            </div>
-            <div className="p-4 pt-8 lg:pt-4">
-              <h3 className="text-4xl sm:text-5xl font-light text-black tracking-tight font-mono">100+</h3>
-              <p className="mt-2 text-xs sm:text-sm text-zinc-600 font-light">Audit Reviews Completed</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FINAL INSTITUTIONAL CTA ── */}
+      {/* ── 7. FINAL INSTITUTIONAL CTA BANNER ── */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-zinc-300 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
             <h2 className="text-2xl sm:text-3xl font-light text-black tracking-tight">
-              Ready to Secure Your Protocol Architecture?
+              Ready to Secure Your Protocol Infrastructure?
             </h2>
             <p className="mt-2 text-zinc-600 text-sm font-light">
-              Connect with our senior security research team for confidential scoping and timelines.
+              Schedule a confidential scoping session with our senior security research team.
             </p>
           </div>
 
