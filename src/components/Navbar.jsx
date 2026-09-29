@@ -261,11 +261,6 @@ export default function Navbar() {
                                         <div className="text-[14px] font-medium text-zinc-900 group-hover:text-blue-600 transition-colors truncate">
                                           {prod.title}
                                         </div>
-                                        {prod.badge && (
-                                          <span className="text-[9px] font-mono font-medium tracking-wider uppercase px-1.5 py-0.5 rounded border border-blue-200 bg-blue-50 text-blue-700">
-                                            {prod.badge}
-                                          </span>
-                                        )}
                                       </div>
                                       <div className="text-[11px] font-light text-zinc-500 line-clamp-1 mt-0.5">
                                         {prod.desc}
@@ -322,11 +317,6 @@ export default function Navbar() {
                                         <div className="text-[14px] font-medium text-zinc-900 group-hover:text-blue-600 transition-colors truncate">
                                           {serv.title}
                                         </div>
-                                        {serv.badge && (
-                                          <span className="text-[9px] font-mono font-medium tracking-wider uppercase px-1.5 py-0.5 rounded border border-blue-200 bg-blue-50 text-blue-700">
-                                            {serv.badge}
-                                          </span>
-                                        )}
                                       </div>
                                       <div className="text-[11px] font-light text-zinc-500 line-clamp-1 mt-0.5">
                                         {serv.desc}
