@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SEO from "../components/SEO";
-import { Upload, CheckCircle2, FileText, Send, Loader2, X } from "lucide-react";
+import { useLocation, Link } from "react-router-dom";
+import { Upload, CheckCircle2, FileText, Send, Loader2, X, ArrowLeft } from "lucide-react";
 
 export default function JobApplication() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const selectedRoleFromQuery = searchParams.get("role") || "Senior Smart Contract Auditor";
+
   const [form, setForm] = useState({
     fullName: "",
     email: "",
     phone: "",
     githubLinkedin: "",
-    role: "Senior Smart Contract Auditor",
+    role: selectedRoleFromQuery,
     coverNote: "",
   });
+
+  useEffect(() => {
+    if (selectedRoleFromQuery) {
+      setForm((prev) => ({ ...prev, role: selectedRoleFromQuery }));
+    }
+  }, [selectedRoleFromQuery]);
 
   const [resumeFile, setResumeFile] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -44,21 +55,34 @@ export default function JobApplication() {
       className="min-h-screen bg-white text-zinc-900 pt-28 md:pt-36 pb-24"
     >
       <SEO
-        title="Careers & Engineering Application | BlocNexus"
-        description="Apply to join BlocNexus Security Research team. We are hiring engineers skilled in Solidity, Rust, Go, System Design, OOP, and Apache distributed infrastructure."
-        keywords="BlocNexus careers, Web3 security jobs, smart contract auditor apply, Solidity Rust Go engineer"
+        title={`Apply for ${form.role} | BlocNexus`}
+        description="Submit your application for Web3 security engineering and auditor roles at BlocNexus."
+        keywords="BlocNexus application, Web3 security job apply, smart contract auditor application, Solidity Rust Go engineer"
         canonical="/apply"
       />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
+        {/* Back Link */}
+        <div className="mb-8">
+          <Link
+            to="/careers"
+            className="inline-flex items-center gap-2 text-xs font-mono text-zinc-600 hover:text-black transition"
+          >
+            <ArrowLeft size={14} /> Back to Open Positions
+          </Link>
+        </div>
+
         {/* 2-COLUMN PLAIN WHITE LAYOUT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* ── LEFT COLUMN: PLAIN TEXT & BULLET POINTS (NO CARDS, NO GRIDS, NO EXTRA DESIGN) ── */}
+          {/* ── LEFT COLUMN: REQUIREMENT OVERVIEW & TECH STACK (PLAIN TEXT & BULLET POINTS) ── */}
           <div className="lg:col-span-6 space-y-8 text-zinc-800">
             <div>
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
+                Job Application Overview
+              </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light text-black tracking-tight leading-[1.1]">
-                Careers & Engineering Application
+                {form.role}
               </h1>
               <p className="mt-4 text-zinc-600 text-base font-light leading-relaxed">
                 BlocNexus is hiring elite security researchers, smart contract auditors, and infrastructure engineers to protect high-value Web3 protocols and digital asset treasuries.
@@ -67,7 +91,7 @@ export default function JobApplication() {
 
             <div>
               <h2 className="text-xl font-medium text-black tracking-tight mb-3">
-                Technical Stack & Competencies
+                Technical Stack & Core Competencies
               </h2>
               <p className="text-zinc-600 text-sm font-light leading-relaxed mb-4">
                 We value deep computer science fundamentals, low-level execution comprehension, and distributed systems architecture:
@@ -111,13 +135,13 @@ export default function JobApplication() {
                 <CheckCircle2 size={36} className="mx-auto text-black" />
                 <h2 className="text-2xl font-light text-black">Application Submitted</h2>
                 <p className="text-zinc-600 text-sm font-light max-w-sm mx-auto leading-relaxed">
-                  Thank you for applying to BlocNexus. Our engineering leads will review your submission and respond within 48 hours.
+                  Thank you for applying to BlocNexus for the position of <strong className="text-black font-medium">{form.role}</strong>. Our engineering leads will review your submission and respond within 48 hours.
                 </p>
                 <button
                   onClick={() => {
                     setSubmitted(false);
                     setResumeFile(null);
-                    setForm({ fullName: "", email: "", phone: "", githubLinkedin: "", role: "Senior Smart Contract Auditor", coverNote: "" });
+                    setForm({ fullName: "", email: "", phone: "", githubLinkedin: "", role: selectedRoleFromQuery, coverNote: "" });
                   }}
                   className="mt-4 px-6 py-2.5 rounded-lg border border-zinc-300 text-xs font-medium text-black hover:border-black transition"
                 >
@@ -126,9 +150,14 @@ export default function JobApplication() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <h2 className="text-2xl font-light text-black tracking-tight mb-6">
-                  Apply for Position
-                </h2>
+                <div>
+                  <h2 className="text-2xl font-light text-black tracking-tight">
+                    Apply for Position
+                  </h2>
+                  <p className="text-xs font-mono text-zinc-500 mt-1">
+                    Role: <span className="text-black font-medium">{form.role}</span>
+                  </p>
+                </div>
 
                 {/* Full Name */}
                 <div>
